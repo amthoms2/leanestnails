@@ -10,19 +10,24 @@ import {
   TopbarRoute,
 } from "./TopbarElements";
 
-const TopBar = () => {
+function handleBar(e) {
+  console.log('you clicked')
+}
+
+const TopBar = ({ isOpen, toggleBar }) => {
+  console.log({isOpen})
   return (
-    <TopbarContainer>
-      <Icon>
+    <TopbarContainer isOpen={isOpen} onClick={handleBar}>
+      <Icon onClick={toggleBar}>
         <ShutIcon />
       </Icon>
       <TopbarWrapper>
         <TopbarMenu>
-          <TopbarLink to="about">About</TopbarLink>
-          <TopbarLink to="services">Services</TopbarLink>
-          <TopbarLink to="gallery">Gallery</TopbarLink>
-          <TopbarLink to="book">Book</TopbarLink>
-          <TopbarLink to="signin">Signin</TopbarLink>
+          <TopbarLink to="about" onClick={toggleBar}>About</TopbarLink>
+          <TopbarLink to="services" onClick={toggleBar}>Services</TopbarLink>
+          <TopbarLink to="gallery" onClick={toggleBar}>Gallery</TopbarLink>
+          <TopbarLink to="book" onClick={toggleBar}>Book</TopbarLink>
+          <TopbarLink to="signin" onClick={toggleBar}>Signin</TopbarLink>
         </TopbarMenu>
 
         <TopBtnWrap>
