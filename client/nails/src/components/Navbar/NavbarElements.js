@@ -3,9 +3,10 @@ import { Link as LinkRouter } from 'react-router-dom'
 import { Link as LinkScroll} from 'react-scroll'
 
 export const Nav = styled.nav`
-  background: #000;
+  background: black;
+  // background-image: linear-gradient(to right, #f1b1b1 , #82e6e8);
   height: 80px;
-  // margin-top: -80px;
+  margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,10 +104,10 @@ export const NavBtn = styled.nav`
 export const NavBtnLink = styled(LinkRouter)`
   border-radius: 50px;
   // background: #01bf71;
-  background: #00FFFF;
+  background: #43E4DB;
   white-space: nowrap;
   padding: 10px 22px;
-  color: #010606;
+  color: c;
   font-size: 16px;
   outline: none;
   border: none;

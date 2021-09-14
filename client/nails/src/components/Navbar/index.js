@@ -17,13 +17,13 @@ const Navbar = ({ toggleBar }) => {
     <>
       <Nav>
         <NavContainer>
-          <NavbarLogo to="/">Leanest Nails</NavbarLogo>
+          <NavbarLogo to="/">Logo</NavbarLogo>
           <MobileIcon onClick={toggleBar}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to="about">About</NavLinks>
+              <NavLinks to='about'>About</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="services">Services</NavLinks>
@@ -32,7 +32,7 @@ const Navbar = ({ toggleBar }) => {
               <NavLinks to="gallery">Gallery</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="book">Book</NavLinks>
+              <NavLinks to="shop">Shop</NavLinks>
             </NavItem>
           </NavMenu>
           <NavBtn>
