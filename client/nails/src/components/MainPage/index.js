@@ -37,7 +37,13 @@ const MainElements = () => {
           <MainH1>The Leanest Nails</MainH1>
           <MainP>Lorem Ipssum dmkelfnenfke</MainP>
           <MainButtonWrapper>
-            <Button to="book" onMouseHover={onHover} onMouseLeave={onHover} primary = 'true' dark='true'>
+            <Button
+              to="book"
+              onMouseHover={onHover}
+              onMouseLeave={onHover}
+              primary="true"
+              dark="true"
+            >
               Book Appointment{hover ? <ArrowForward /> : <ArrowRight />}
             </Button>
           </MainButtonWrapper>

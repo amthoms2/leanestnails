@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scrollUp } from "react-scroll";
 import {
   Nav,
   NavContainer,
@@ -13,33 +15,75 @@ import {
 } from "./NavbarElements";
 
 const Navbar = ({ toggleBar }) => {
+  const [scroll, setScroll] = useState(false);
+
+  const scrollChange = () => {
+    if (window.scrollY >= 80) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+
+  const toggleHome = () => {
+    scrollUp.scrollToTop();
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollChange);
+  }, []);
+
   return (
     <>
-      <Nav>
-        <NavContainer>
-          <NavbarLogo to="/">Logo</NavbarLogo>
-          <MobileIcon onClick={toggleBar}>
-            <FaBars />
-          </MobileIcon>
-          <NavMenu>
-            <NavItem>
-              <NavLinks to='about'>About</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="services">Services</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="gallery">Gallery</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="shop">Shop</NavLinks>
-            </NavItem>
-          </NavMenu>
-          <NavBtn>
-            <NavBtnLink to="/signin">Sign In</NavBtnLink>
-          </NavBtn>
-        </NavContainer>
-      </Nav>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav scroll={scroll}>
+          <NavContainer>
+            <NavbarLogo to="/" onClick={toggleHome}>
+              Logo
+            </NavbarLogo>
+            <MobileIcon onClick={toggleBar}>
+              <FaBars />
+            </MobileIcon>
+            <NavMenu>
+              <NavItem>
+                <NavLinks
+                  to="about"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  About
+                </NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks
+                to="services"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+                >Services</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="gallery" smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}>Gallery</NavLinks>
+              </NavItem>
+              <NavItem>
+                <NavLinks to="shop" >Shop</NavLinks>
+              </NavItem>
+            </NavMenu>
+            <NavBtn>
+              <NavBtnLink to="signin">Sign In</NavBtnLink>
+            </NavBtn>
+          </NavContainer>
+        </Nav>
+      </IconContext.Provider>
     </>
   );
 };

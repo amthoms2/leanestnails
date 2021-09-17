@@ -3,8 +3,7 @@ import { Link as LinkRouter } from 'react-router-dom'
 import { Link as LinkScroll} from 'react-scroll'
 
 export const Nav = styled.nav`
-  background: black;
-  // background-image: linear-gradient(to right, #f1b1b1 , #82e6e8);
+  background: ${({scroll}) => (scroll ? '#000' : 'transparent')};
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -86,10 +85,10 @@ export const NavLinks = styled(LinkScroll)`
   cursor: pointer;
 
   &.active {
-    border-bottom: 3px solid #01bf71
+    border-bottom: 3px solid #01bf71;
   }
 `
-//@.active changed the border bottom color when scrolling down
+//@.active changed the border bottom color when scrolling down.
 
 export const NavBtn = styled.nav`
   display: flex;
