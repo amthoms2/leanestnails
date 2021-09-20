@@ -65,7 +65,7 @@ export const NavMenu = styled.ul`
   text-align: center;
   margin-right: -22px;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 768px) {
   display: none;
   }
 
@@ -73,6 +73,20 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
   height: 80px;
+`
+
+export const NavLink = styled(LinkRouter)`
+color: #fff;
+display: flex;
+align-items: center;
+text-decoration: none;
+padding: 0 1rem;
+height: 100%;
+cursor: pointer;
+
+&.active {
+  border-bottom: 3px solid #01bf71;
+}
 `
 
 export const NavLinks = styled(LinkScroll)`
@@ -106,7 +120,7 @@ export const NavBtnLink = styled(LinkRouter)`
   background: #43E4DB;
   white-space: nowrap;
   padding: 10px 22px;
-  color: c;
+  color: #010606;
   font-size: 16px;
   outline: none;
   border: none;

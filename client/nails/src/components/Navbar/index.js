@@ -9,6 +9,7 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
+  NavLink,
   NavLinks,
   NavBtn,
   NavBtnLink,
@@ -59,23 +60,30 @@ const Navbar = ({ toggleBar }) => {
               </NavItem>
               <NavItem>
                 <NavLinks
-                to="services"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-                >Services</NavLinks>
+                  to="services"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Services
+                </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="gallery" smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}>Gallery</NavLinks>
+                <NavLinks
+                  to="gallery"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Gallery
+                </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="shop" >Shop</NavLinks>
+              <NavLink to="shop">Shop</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>

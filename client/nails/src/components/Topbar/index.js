@@ -6,6 +6,7 @@ import {
   TopbarWrapper,
   TopbarMenu,
   TopbarLink,
+  TopbarLinkRoute,
   TopBtnWrap,
   TopbarRoute,
 } from "./TopbarElements";
@@ -26,8 +27,8 @@ const TopBar = ({ isOpen, toggleBar }) => {
           <TopbarLink to="about" onClick={toggleBar}>About</TopbarLink>
           <TopbarLink to="services" onClick={toggleBar}>Services</TopbarLink>
           <TopbarLink to="gallery" onClick={toggleBar}>Gallery</TopbarLink>
-          <TopbarLink to="book" onClick={toggleBar}>Book</TopbarLink>
-          <TopbarLink to="signin" onClick={toggleBar}>Signin</TopbarLink>
+          <TopbarLinkRoute to="shop" onClick={toggleBar}>Shop</TopbarLinkRoute>
+          <TopbarLinkRoute to="book" onClick={toggleBar}>Book</TopbarLinkRoute>
         </TopbarMenu>
 
         <TopBtnWrap>

@@ -67,6 +67,24 @@ export const TopbarLink = styled(LinkScroll)`
   }
 `
 
+export const TopbarLinkRoute = styled(LinkRouter)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    color: #01bf71;
+    transition: 0.2s ease-in-out;
+  }
+`
+
 export const TopBtnWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -88,6 +106,6 @@ export const TopbarRoute = styled(LinkRouter)`
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
-    color: #010606
+    color: #010606;
   }
 `

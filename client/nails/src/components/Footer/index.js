@@ -30,7 +30,7 @@ const Footer = () => {
             <LinksWrapper>
               <FooterItems>
                 <FooterH1>Quick Links</FooterH1>
-                <FooterLink to="/home">Home</FooterLink>
+                <FooterLink to="/">Home</FooterLink>
                 <FooterLink to="/gallery">Gallery</FooterLink>
                 <FooterLink to="/book">Book an Appointment</FooterLink>
                 <FooterLink to="/shop">Shop</FooterLink>
