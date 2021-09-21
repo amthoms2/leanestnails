@@ -1,11 +1,14 @@
 import React from 'react'
+import ShopNav from '../components/Shop/ShopNav'
+import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 
-const shop = () => {
+const Shop = () => {
   return (
-    <div>
-      <h1>Shop</h1>
-    </div>
+    <>
+      <ShopAnnouncements />
+      <ShopNav />
+    </>
   )
 }
 
-export default shop
+export default Shop
