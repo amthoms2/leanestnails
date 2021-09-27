@@ -21,7 +21,7 @@ export const sliderData = [
     description: 'Put the description here!',
     bg: 'fbf0f4'
   }
-]
+];
 
 export const categoryData = [
   {
@@ -31,7 +31,27 @@ export const categoryData = [
   },
   {
     id: 2,
-    img: require('./images/harley.png').default,
+    img: require('./images/spilledpolish.jpg').default,
     title: 'Custom Luxury Press on Nails'
   },
+];
+
+export const products = [
+  {
+    id: 1,
+    img: require('./images/harley.png').default,
+  },
+  {
+    id: 2,
+    img: require('./images/nailflower.jpg').default,
+  },
+  {
+    id: 3,
+    img: require('./images/lighting.jpg').default,
+  },
+  {
+    id: 4,
+    img: require('./images/shop.png').default,
+  }
 ]
+

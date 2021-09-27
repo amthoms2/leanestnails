@@ -12,9 +12,9 @@ const Slider = () => {
 
   const handleClick = (direction) => {
     if(direction === 'left'){
-      setSlide(slide > 0 ? slide-1 : 2)
+      setSlide(slide > 0 ? slide-1 : sliderData.length-1)
     } else {
-      setSlide(slide < 2 ? slide+1 : 0)
+      setSlide(slide < sliderData.length-1 ? slide+1 : 0)
     }
   }
 
