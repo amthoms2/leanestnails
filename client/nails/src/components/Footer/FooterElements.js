@@ -30,6 +30,7 @@ export const LinksWrapper = styled.div`
 display: flex;
 @media screen and (max-width: 820px){
   flex-direction: column;
+}
 `
 
 export const FooterItems = styled.div`
