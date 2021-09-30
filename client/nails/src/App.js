@@ -6,12 +6,13 @@ import Home from './pages'
 import Signin from './pages/signin'
 import Book from './pages/book'
 import Shop from './pages/shop'
+import Signup from './pages/signup'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' component={Home} exact />
+        <Route path='/' component={Signup} exact />
         <Route path='/signin' component={Signin} exact />
         <Route path='/shop' component={Shop} exact />
         <Route path='/book' component={Book} exact />

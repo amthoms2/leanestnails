@@ -1,10 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const SigninContainer = styled.div``
 
 const Signin = () => {
   return (
-    <div>
-      <h1>Sign In</h1>
-    </div>
+    <>
+      <SigninContainer></SigninContainer>
+    </>
   )
 }
 
