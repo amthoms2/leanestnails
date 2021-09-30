@@ -1,6 +1,7 @@
 
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// eslint-disable-next-line
 import Home from './pages'
 import Signin from './pages/signin'
 import Book from './pages/book'

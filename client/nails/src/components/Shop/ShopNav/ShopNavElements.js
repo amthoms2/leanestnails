@@ -4,7 +4,7 @@ export const NavContainer = styled.div`
   height: 60px;
   // z-index: 1;
   // width: 100%;
-  // padding: 0 24px;
+  //padding: 0 24px;
   // max-width: 1100px;
 `
 
@@ -12,7 +12,7 @@ export const NavWrapper = styled.div`
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 `
 export const Left = styled.div`
   flex: 1;
@@ -21,6 +21,7 @@ export const Left = styled.div`
 `
 export const Center = styled.div`
   flex: 1;
+  text-align: right;
 `
 export const Right = styled.div`
 flex: 1;
