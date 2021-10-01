@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import img from '../../images/lighting.jpg'
+// import { Link as LinkRouter } from 'react-router-dom'
 
-export const RegisterWrapper = styled.div`
+export const SigninWrapper = styled.div`
   background-image: url(${img});
   background-size: cover;
   display: flex;
@@ -60,11 +61,11 @@ export const MainContainer = styled.div`
   }
 `;
 
-export const WelcomeText = styled.h2`
+export const Title = styled.h2`
   margin: 3rem 0 2rem 0;
 `;
 
-export const InputContainer = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -122,6 +123,10 @@ export const ForgotPassword = styled.h4`
   cursor: pointer;
 `;
 
+export const Signup = styled.h4`
+  cursor: pointer;
+  margin-top: 20px;
+`;
 
 export const Input = styled.input`
   background: rgba(255, 255, 255, 0.15);

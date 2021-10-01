@@ -1,14 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const SigninContainer = styled.div``
+import Signin from '../components/Account/Signin'
 
-const Signin = () => {
+const SignIn = () => {
   return (
     <>
-      <SigninContainer></SigninContainer>
+      <Signin />
     </>
   )
 }
 
-export default Signin
+export default SignIn

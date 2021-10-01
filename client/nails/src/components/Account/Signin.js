@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // eslint-disable-next-line
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-import {MainContainer, WelcomeText, InputContainer, ButtonContainer, LoginWith, HorizontalRule, IconsContainer, ForgotPassword, StyledInput, StyledButton, RegisterWrapper, StyledIcon} from './SignUpElements'
+import { FaFacebookF, FaInstagram, FaGoogle } from "react-icons/fa";
+import {MainContainer, Title, ButtonContainer, LoginWith, HorizontalRule, IconsContainer, ForgotPassword, StyledInput, StyledButton, SigninWrapper, StyledIcon, Form, Signup} from './SigninElements'
 
-const Register = () => {
+const Signin = () => {
   const FacebookBackground =
     "linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)";
 
@@ -11,15 +12,15 @@ const Register = () => {
     "linear-gradient(to right, #A12AC4 0%, #ED586C 40%, #F0A853 100%)";
   return (
     <>
-    <RegisterWrapper>
+    <SigninWrapper>
       <MainContainer>
-      <WelcomeText>Welcome</WelcomeText>
-      <InputContainer>
+      <Title>Welcome</Title>
+      <Form>
         <StyledInput type="text" placeholder="Email" />
         <StyledInput type="password" placeholder="Password" />
-      </InputContainer>
+      </Form>
       <ButtonContainer>
-        <StyledButton>SIGN UP</StyledButton>
+        <StyledButton>SIGN IN</StyledButton>
       </ButtonContainer>
       <LoginWith>OR LOGIN WITH</LoginWith>
       <HorizontalRule />
@@ -28,14 +29,15 @@ const Register = () => {
           <FaFacebookF />
         </StyledIcon>
          <StyledIcon color={InstagramBackground}>
-          <FaInstagram />
+          <FaGoogle />
         </StyledIcon>
       </IconsContainer>
       <ForgotPassword>Forgot Password ?</ForgotPassword>
+      <Signup><Link to="/signup" style={{color: '#fff', textDecoration: 'none'}}>SIGN UP ?</Link></Signup>
     </MainContainer>
-    </RegisterWrapper>
+    </SigninWrapper>
     </>
   )
 }
 
-export default Register
+export default Signin
