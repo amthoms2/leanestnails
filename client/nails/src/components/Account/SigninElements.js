@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import img from '../../images/lighting.jpg'
+import { motion } from "framer-motion"
 // import { Link as LinkRouter } from 'react-router-dom'
 
 export const SigninWrapper = styled.div`
@@ -189,3 +190,21 @@ export const StyledInput = styled.input`
     font-size: 1rem;
   }
 `;
+
+export const BackDrop = styled(motion.div)`
+  width: 160%;
+  height: 550px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  transform: rotate(60deg);
+  top: 0px;
+  bottom: 0px;
+  background: rgb(241, 196, 15);
+  background: linear-gradient(
+    58deg,
+    rgba(241, 196, 15, 1) 20%,
+    rgba(243, 172, 18, 1) 100%
+  );
+`
