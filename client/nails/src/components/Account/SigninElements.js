@@ -122,11 +122,13 @@ export const StyledIcon = styled.div`
 
 export const ForgotPassword = styled.h4`
   cursor: pointer;
+  text-decoration: underline;
 `;
 
 export const Signup = styled.h4`
   cursor: pointer;
   margin-top: 20px;
+  text-decoration: underline;
 `;
 
 export const Input = styled.input`
@@ -203,3 +205,7 @@ export const BackDrop = styled(motion.div)`
   bottom: 0px;
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
 `
+// export const Link = styled(LinkRouter)`
+//   color: ${(props) => props.type === "link" && "white"};
+// `
+

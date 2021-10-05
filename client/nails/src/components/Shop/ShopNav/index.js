@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import {Link} from 'react-router-dom'
 import {NavContainer, NavWrapper, Left, Center, Right, Logo, MenuOffering}from './ShopNavElements'
-import {FaShoppingCart} from "react-icons/fa";
+import {FaShoppingCart} from "react-icons/fa"
 
 const ShopNav = () => {
   return (
@@ -10,7 +11,7 @@ const ShopNav = () => {
             <Left>LOGO</Left>
             <Center><Logo>Leanest Nails</Logo></Center>
             <Right>
-              <MenuOffering>Sign In</MenuOffering>
+              <Link to='/signin'><MenuOffering>Sign In</MenuOffering></Link>
               <MenuOffering>
                 <FaShoppingCart />
               </MenuOffering>

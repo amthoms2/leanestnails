@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { mobile } from '../../../responsive'
 
 export const CategoryContainer = styled.div`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-
+  ${mobile({ padding: "0px", flexDirection: "column" })}
 `
 export const ItemContainer = styled.div`
   flex: 1;
@@ -16,6 +17,7 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  ${mobile({ height: "40vh" })}
 `
 export const Information = styled.div`
   position: absolute;
@@ -31,6 +33,7 @@ export const Information = styled.div`
 export const Title = styled.h1`
   color: #fff;
   margin-bottom: 20px;
+  text-align: center;
 `
 export const Button = styled.button`
   border: none;

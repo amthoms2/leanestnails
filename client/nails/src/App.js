@@ -7,6 +7,8 @@ import SignIn from './pages/signin'
 import Book from './pages/book'
 import Shop from './pages/shop'
 import SignUp from './components/Account/Signup'
+import Cart from './pages/cart'
+// import ProductList from './pages/productList'
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path='/signup' component={SignUp} exact />
         <Route path='/shop' component={Shop} exact />
         <Route path='/book' component={Book} exact />
+        <Route path='/cart' component={Cart} exact />
       </Switch>
     </Router>
   );

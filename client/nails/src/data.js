@@ -27,7 +27,7 @@ export const categoryData = [
   {
     id: 1,
     img: require('./images/lighting.jpg').default,
-    title: 'Press On Nails'
+    title: 'Press on Nails'
   },
   {
     id: 2,

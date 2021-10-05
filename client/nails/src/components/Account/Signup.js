@@ -59,28 +59,28 @@ const SignUp = (props) => {
   //     }, 400);
   //   };
 
-    // const switchToSignin = () => {
-    //   playExpandingAnimation();
-    //   setTimeout(() => {
-    //     setActive("signin");
-    //   }, 400);
-    // };
+  // const switchToSignin = () => {
+  //   playExpandingAnimation();
+  //   setTimeout(() => {
+  //     setActive("signin");
+  //   }, 400);
+  // };
 
-    // const contextValue = { switchToSignup, switchToSignin };
+  // const contextValue = { switchToSignup, switchToSignin };
 
   return (
     <>
-       {/* <AccountContext.Provider value={contextValue}> */}
+      {/* <AccountContext.Provider value={contextValue}> */}
       <SigninWrapper>
-        <MainContainer>
-          <Title>Welcome</Title>
+        <MainContainer style={{ height: "95vh" }}>
+          <Title style={{ marginTop: "20px" }}>Welcome</Title>
           {/* <BackDrop
               initial={false}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={backdropVariants}
               transition={expandingTransition}
             /> */}
-          <Form>
+          <Form style={{ height: "35%" }}>
             <StyledInput type="text" placeholder="First Name" />
             <StyledInput type="text" placeholder="Last Name" />
             <StyledInput type="email" placeholder="Email" />
@@ -90,7 +90,7 @@ const SignUp = (props) => {
           <ButtonContainer>
             <StyledButton>SIGN UP</StyledButton>
           </ButtonContainer>
-          <LoginWith>OR LOGIN WITH</LoginWith>
+          <LoginWith>OR SIGNUP WITH</LoginWith>
           <HorizontalRule />
           <IconsContainer>
             <StyledIcon>
@@ -100,7 +100,10 @@ const SignUp = (props) => {
               <FaGoogle />
             </StyledIcon>
           </IconsContainer>
-          <ForgotPassword>Forgot Password ?</ForgotPassword>
+          <Link style={{ color: "#fff", textDecoration: "none" }}><ForgotPassword>
+            Forgot Password ?
+            </ForgotPassword>
+          </Link>
           <Signup>
             <Link
               to="/signin"

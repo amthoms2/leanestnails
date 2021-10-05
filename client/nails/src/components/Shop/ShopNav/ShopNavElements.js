@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mobile } from '../../../responsive'
 
 export const NavContainer = styled.div`
   height: 60px;
@@ -6,6 +7,8 @@ export const NavContainer = styled.div`
   // width: 100%;
   //padding: 0 24px;
   // max-width: 1100px;
+  ${mobile({ height: "50px" })}
+
 `
 
 export const NavWrapper = styled.div`
@@ -13,11 +16,13 @@ export const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${mobile({ padding: "10px 0px" })}
 `
 export const Left = styled.div`
   flex: 1;
   align-items: center;
   display: flex;
+  ${mobile({ display: "none" })}
 `
 export const Center = styled.div`
   flex: 1;
@@ -28,11 +33,13 @@ flex: 1;
 display: flex;
 align-items: center;
 justify-content: flex-end;
+${mobile({ justifyContent: "center" })}
 `
 
 export const Logo = styled.h1`
   font-weight: bold;
   text-align: center;
+  ${mobile({ fontSize: "24px" })}
 `
 
 export const MenuOffering = styled.div`

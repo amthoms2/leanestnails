@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { mobile } from '../../../responsive'
+
 
 export const SliderContainer = styled.div`
   display: flex;
@@ -6,6 +8,7 @@ export const SliderContainer = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
+  ${mobile({ display: "none" })}
 `
 
 export const Arrow = styled.div`

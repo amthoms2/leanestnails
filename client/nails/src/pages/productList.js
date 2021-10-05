@@ -4,6 +4,7 @@ import ShopNav from '../components/Shop/ShopNav'
 import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Products from '../components/Shop/Products'
 import Footer from '../components/Footer'
+import { mobile } from '../responsive'
 
 const ProductListContainer = styled.div``
 const Title = styled.h1`
@@ -12,9 +13,11 @@ const Title = styled.h1`
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
 `
 const Filter = styled.div`
 margin: 20px;
+${mobile({ display: "flex", flexDirection: "column" })}
 `
 const FilterText = styled.span`
 font-size: 20px;
@@ -25,6 +28,7 @@ margin-right: 20px;
 const Select = styled.select`
   padding: 10px;
   margin-right: 20px;
+  ${mobile({ margin: "10px 0px" })}
 `
 
 const Option = styled.option`

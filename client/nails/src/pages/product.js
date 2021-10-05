@@ -5,6 +5,7 @@ import ShopNav from '../components/Shop/ShopNav'
 import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Footer from '../components/Footer'
 import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
+import { mobile } from '../responsive'
 
 export const ProductContainer = styled.div`
 `
@@ -12,6 +13,7 @@ export const ProductContainer = styled.div`
 export const ProductWrapper = styled.div`
   padding: 50;
   display: flex;
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `
 export const ImageContainer = styled.div`
   flex: 1;
@@ -20,10 +22,12 @@ export const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: contain;
+  ${mobile({ height: "40vh" })}
 `
 export const Information = styled.div`
   flex: 1;
   padding: 0px 50px;
+  ${mobile({ padding: "10px" })}
 `
 
 export const Title = styled.h1`
@@ -42,6 +46,7 @@ export const AddContainer= styled.div`
   align-items: center;
   width: 50%;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `
 export const AmountContainer = styled.div`
   display: flex;

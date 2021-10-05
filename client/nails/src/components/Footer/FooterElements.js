@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import { mobile } from '../../responsive'
 
 export const FooterContainer = styled.footer`
   background-color: #101522;
-
 `
 
 export const FooterWrapper = styled.div`
@@ -14,13 +14,12 @@ export const FooterWrapper = styled.div`
   flex-direction: column;
   max-width: 1100px;
   margin: 0 auto;
-
+  ${mobile({ padding: "0px" })};
 `
 
 export const FooterLinks = styled.div`
 display: flex;
 justify-content: center;
-
 @media screen and (max-width: 820px){
   padding-top: 32px;
 }
