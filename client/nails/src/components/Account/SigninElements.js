@@ -198,13 +198,8 @@ export const BackDrop = styled(motion.div)`
   display: flex;
   flex-direction: column;
   border-radius: 50%;
-  transform: rotate(60deg);
+  /* transform: rotate(0deg); */
   top: 0px;
   bottom: 0px;
-  background: rgb(241, 196, 15);
-  background: linear-gradient(
-    58deg,
-    rgba(241, 196, 15, 1) 20%,
-    rgba(243, 172, 18, 1) 100%
-  );
+  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
 `

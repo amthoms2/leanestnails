@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line
@@ -16,56 +17,55 @@ import {
   StyledIcon,
   Form,
   Signup,
-  BackDrop,
 } from "./SigninElements";
 
-const backdropVariants = {
-  expanded: {
-    width: "233%",
-    height: "1050px",
-    borderRadius: "20%",
-    transform: "rotate(60deg)",
-  },
-  collapsed: {
-    width: "80vw",
-    height: "80vh",
-    borderRadius: "10px",
-    transform: "rotate(0deg)",
-  },
-};
+// const backdropVariants = {
+//   expanded: {
+//     width: "233%",
+//     height: "1050px",
+//     borderRadius: "20%",
+//     transform: "rotate(60deg)",
+//   },
+//   collapsed: {
+//     width: "80vw",
+//     height: "80vh",
+//     borderRadius: "10px",
+//     transform: "rotate(0deg)",
+//   },
+// };
 
-const expandingTransition = {
-  type: "spring",
-  duration: 2.3,
-  stiffness: 30,
-};
+// const expandingTransition = {
+//   type: "spring",
+//   duration: 2.3,
+//   stiffness: 30,
+// };
 
 const Signin = () => {
-  const [isExpanded, setExpanded] = useState(false);
+  // const [isExpanded, setExpanded] = useState(false);
   // const [active, setActive] = useState("signin");
 
-  const playExpandingAnimation = () => {
-    setExpanded(true);
-    setTimeout(() => {
-      setExpanded(false);
-    }, expandingTransition.duration * 1000 - 1500);
-  };
+  // const playExpandingAnimation = () => {
+  //   setExpanded(true);
+  //   setTimeout(() => {
+  //     setExpanded(false);
+  //   }, 3000);
+  // };
 
-  const switchToSignup = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      // setActive("signup");
-    }, 400);
-  };
+  // const switchToSignup = () => {
+  //   playExpandingAnimation();
+  //   setTimeout(() => {
+  //     // setActive("signup");
+  //   }, 400);
+  // };
 
-  const switchToSignin = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      // setActive("signin");
-    }, 400);
-  };
+  // const switchToSignin = () => {
+  //   playExpandingAnimation();
+  //   setTimeout(() => {
+  //     // setActive("signin");
+  //   }, 400);
+  // };
 
-  const contextValue = { switchToSignup, switchToSignin };
+  // const contextValue = { switchToSignup, switchToSignin };
 
   return (
     <>
@@ -73,12 +73,12 @@ const Signin = () => {
         <MainContainer>
           <Title>Welcome</Title>
           <Form>
-          <BackDrop
-            initial={false}
-            animate={isExpanded ? "expanded" : "collapsed"}
-            variants={backdropVariants}
-            transition={expandingTransition}
-          />
+          {/* <BackDrop
+            // initial={false}
+            // animate={isExpanded ? "expanded" : "collapsed"}
+            // variants={backdropVariants}
+            // transition={expandingTransition}
+          /> */}
             <StyledInput type="text" placeholder="Email" />
             <StyledInput type="password" placeholder="Password" />
           </Form>
