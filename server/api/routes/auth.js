@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 const router = require("express").Router();
 const CryptoJS = require("crypto-js");
-const jwt = require('jsonwebtoken');
 const User = require("../models/User");
 //MAKE SPECIFIC ERROR HANDLING FOR USERS!!
 
@@ -38,20 +37,10 @@ router.post("/login", async (req, res) => {
 
       if(originalPassword !== req.body.password) return res.status(401).json("You entered in the wrong credentials");
 
-    const accessToken = jwt.sign(
-      {
-      id: user._id,
-      isAdmin: user.isAdmin,
-      },
-      process.env.JWT_SEC,
-      {expiresIn: "2d"}
-    )
-    //user id in this case is from the object returned; if the user is an admin, the user will have different access to different things.
-
     const { password, ...others } = user._doc;
     //use the spread operator to only res.json everything in the object EXCEPT the password. Added ._doc because the obj returned without had more key value pairs
 
-      res.status(200).json({ ...others, accessToken })
+      res.status(200).json(others)
 
   } catch(err){
     res.status(500).json(err)

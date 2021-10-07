@@ -1,19 +1,8 @@
-/* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
 const router = require('express').Router();
-const { verifyToken, verifyTokenandAuth, verifyTokenandAdmin } = require("./verifyToken");
-const CryptoJS = require("crypto-js");
-const User = require("../models/User");
 
-//UPDATE A USER
-router.put("/:id", verifyTokenandAuth, async (req, res) => {
-  if(req.body.password){
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString()
-  }
 
+<<<<<<< HEAD
   try{
     const updatedUser = await User.findByIdAndUpdate(req.params.id, {
       $set: req.body
@@ -59,5 +48,7 @@ router.get("/find/:id", verifyTokenandAdmin, async (req, res) => {
 //   }
 // })
 
+=======
+>>>>>>> parent of 94f8aa5 (added functins to verify tokens for users and admin - postman route testing)
 
 module.exports = router;
