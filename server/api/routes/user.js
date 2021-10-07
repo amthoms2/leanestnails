@@ -36,7 +36,7 @@ router.delete("/:id", verifyTokenandAuth, async (req, res) => {
 })
 
 
-//ADMIN GET USER
+//ADMIN GET 1 USER
 router.get("/find/:id", verifyTokenandAdmin, async (req, res) => {
   try{
     const user = await User.findById(req.params.id)
@@ -47,6 +47,17 @@ router.get("/find/:id", verifyTokenandAdmin, async (req, res) => {
   }catch(err){
     res.status(500).json(err)
   }
-})
+});
+
+//ADMIN GET ALL USERS
+// router.get("/", verifyTokenandAdmin, async (req, res) => {
+//   try{
+//     const users = await User.find()
+//     res.status(200).json(users)
+//   }catch(err){
+//     res.status(500).json(err)
+//   }
+// })
+
 
 module.exports = router;
