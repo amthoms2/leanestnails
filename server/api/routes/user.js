@@ -1,9 +1,21 @@
 /* eslint-disable no-unused-vars */
 const router = require('express').Router();
+const {
+  verifyToken,
+  verifyTokenandAuth,
+  verifyTokenandAdmin
+} = require("./verifyToken");
+const User = require("../models/User");
 
 
-<<<<<<< HEAD
-  try{
+//UPDATE
+router.put("/:id", verifyTokenandAuth, async (req, res) => {
+  if (req.body.password) {
+    req.body.password = CryptoJS.AES.encrypt(
+      req.body.password,
+      process.env.PASS_SEC
+    ).toString();
+  }try{
     const updatedUser = await User.findByIdAndUpdate(req.params.id, {
       $set: req.body
     }, {new: true})
@@ -39,16 +51,14 @@ router.get("/find/:id", verifyTokenandAdmin, async (req, res) => {
 });
 
 //ADMIN GET ALL USERS
-// router.get("/", verifyTokenandAdmin, async (req, res) => {
-//   try{
-//     const users = await User.find()
-//     res.status(200).json(users)
-//   }catch(err){
-//     res.status(500).json(err)
-//   }
-// })
+router.get("/", verifyTokenandAdmin, async (req, res) => {
+  try{
+    const users = await User.find()
+    res.status(200).json(users)
+  }catch(err){
+    res.status(500).json(err)
+  }
+})
 
-=======
->>>>>>> parent of 94f8aa5 (added functins to verify tokens for users and admin - postman route testing)
 
 module.exports = router;
