@@ -4,6 +4,7 @@ const CryptoJS = require("crypto-js");
 const User = require("../models/User");
 //MAKE SPECIFIC ERROR HANDLING FOR USERS!!
 
+//SIGN UP POST ROUTE
 router.post("/signup", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -20,5 +21,31 @@ router.post("/signup", async (req, res) => {
     res.status(500).json(err)
   }
 });
+
+//LOGIN POST ROUTE
+router.post("/login", async (req, res) => {
+  try{
+    const user = await User.findOne({ username: req.body.username });
+
+    if(!user) return res.status(401).json("You entered in the wrong credentials")
+
+    const decryptPassword = CryptoJS.AES.decrypt(
+      user.password,
+      process.env.PASS_SEC)
+
+    const originalPassword = decryptPassword.toString(CryptoJS.enc.Utf8);
+
+      if(originalPassword !== req.body.password) return res.status(401).json("You entered in the wrong credentials");
+
+    const { password, ...others } = user._doc;
+    //use the spread operator to only res.json everything in the object EXCEPT the password. Added ._doc because the obj returned without had more key value pairs
+
+      res.status(200).json(others)
+
+  } catch(err){
+    res.status(500).json(err)
+  }
+
+})
 
 module.exports = router;
