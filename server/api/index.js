@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require('path')
 const morgan = require('morgan')
-// const userRoute = require('./routes/user')
+const userRoute = require('./routes/user')
 const authRoute = require('./routes/auth')
 // const path = require('path')
 //helps use an absolute path
@@ -25,7 +25,8 @@ app.use(express.json()) // format of sending data via key: value pairs
 app.use(express.static(path.join(__dirname, '/public')))
 //use this root folder full of static files every single req and res!
 //use path.join to be able to access this folder regardless of the cwd
-app.use('/api/auth', authRoute)
+app.use('/api/auth', authRoute);
+app.use("/api/users", userRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello Nails!')
