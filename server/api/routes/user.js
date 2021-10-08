@@ -52,13 +52,42 @@ router.get("/find/:id", verifyTokenandAdmin, async (req, res) => {
 
 //ADMIN GET ALL USERS
 router.get("/", verifyTokenandAdmin, async (req, res) => {
+  const query = req.query.new
   try{
-    const users = await User.find()
+    const users = query ? await User.find().sort({ _id:-1 }).limit(5) : await User.find();
+    //if querying (new) it will return 5 most recent users; ^ will sort it in order?
     res.status(200).json(users)
   }catch(err){
     res.status(500).json(err)
   }
 })
 
+//GET USER STATISTICS
+
+router.get("/stats", verifyTokenandAdmin, async (req, res) => {
+  const date = new Date();
+  const prevYear = new Date(date.setFullYear(date.getFullYear() - 1));
+
+  try{
+    const data = await User.aggregate([
+      {$match: {createdAt: { $gte: prevYear } } },
+      {
+        $project: {
+          month: { $month: "$createdAt"}
+        },
+      },
+      {
+        $group: {
+          _id: "$month",
+          total: { $sum: 1 },
+          //id is representation of the current month; oct = 10
+        }
+      }
+    ]);
+    res.status(200).json(data)
+  }catch(err){
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router;

@@ -6,6 +6,7 @@ const path = require('path')
 const morgan = require('morgan')
 const userRoute = require('./routes/user')
 const authRoute = require('./routes/auth')
+const productRoute = require('./routes/product');
 // const path = require('path')
 //helps use an absolute path
 const port = 3000
@@ -26,7 +27,9 @@ app.use(express.static(path.join(__dirname, '/public')))
 //use this root folder full of static files every single req and res!
 //use path.join to be able to access this folder regardless of the cwd
 app.use("/api/users", userRoute);
-app.use('/api/auth', authRoute)
+app.use('/api/auth', authRoute);
+app.use('/api/products', productRoute);
+
 
 app.get('/', (req, res) => {
   res.send('Hello Nails!')
