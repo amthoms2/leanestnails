@@ -9,9 +9,11 @@ const authRoute = require('./routes/auth')
 const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart');
 const orderRoute = require('./routes/order');
+const stripeRoute = require("./routes/stripe");
+const cors = require("cors")
 // const path = require('path')
 //helps use an absolute path
-const port = 3000
+const port = 8080
 
 dotenv.config();
 
@@ -22,6 +24,7 @@ mongoose
     console.log(err);
   });
 
+app.use(cors())
 app.use(morgan("dev"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // format of sending data via key: value pairs
@@ -33,14 +36,14 @@ app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);
-
+app.use("/api/checkout", stripeRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello Nails!')
 })
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
 
