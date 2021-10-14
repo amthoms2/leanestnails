@@ -81,7 +81,6 @@ const SignUp = (props) => {
               transition={expandingTransition}
             /> */}
           <Form style={{ height: "35%" }}>
-            <StyledInput type="text" placeholder="create username" />
             <StyledInput type="text" placeholder="First Name" />
             <StyledInput type="text" placeholder="Last Name" />
             <StyledInput type="email" placeholder="Email" />

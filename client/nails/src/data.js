@@ -27,12 +27,14 @@ export const categoryData = [
   {
     id: 1,
     img: require('./images/lighting.jpg').default,
-    title: 'Press on Nails'
+    title: 'Press on Nails',
+    category: 'readytoship'
   },
   {
     id: 2,
     img: require('./images/spilledpolish.jpg').default,
-    title: 'Custom Luxury Press on Nails'
+    title: 'Custom Luxury Press on Nails',
+    category: 'custom'
   },
 ];
 

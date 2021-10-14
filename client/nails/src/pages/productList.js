@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import ShopNav from '../components/Shop/ShopNav'
 import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
@@ -35,6 +36,26 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
+  const location = useLocation();
+  // console.log(location.pathname.split("/")[2])
+  const category = location.pathname.split("/")[2];
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilters = (evt) => {
+    const val = evt.target.value;
+    setFilters({
+      ...filters,
+      [evt.target.name]: val,
+    })
+  }
+   //w/out the spread op, it would return two individual objects for color and shape
+
+  const handleSort = (evt) => {
+    const val = evt.target.value;
+    setSort(val)
+  }
+
   return (
     <>
       <ProductListContainer>
@@ -43,8 +64,8 @@ const ProductList = () => {
         <Title> Press On Nails </Title>
         <FilterContainer>
           <Filter><FilterText>Filter Products: </FilterText>
-            <Select>
-              <Option disabled selected>Color</Option>
+            <Select name="color" onChange={handleFilters}>
+              <Option disabled>Color</Option>
               <Option>Black</Option>
               <Option>White</Option>
               <Option>Red</Option>
@@ -53,8 +74,8 @@ const ProductList = () => {
               <Option>Green</Option>
               <Option>Multicolor</Option>
             </Select>
-            <Select>
-            <Option disabled selected>Shape</Option>
+            <Select name="shape" onChange={handleFilters}>
+            <Option disabled>Shape</Option>
               <Option>Almond</Option>
               <Option>Long Stiletto</Option>
               <Option>Short Oval</Option>
@@ -63,15 +84,15 @@ const ProductList = () => {
           </Filter>
 
           <Filter><FilterText>Sort Products: </FilterText>
-            <Select>
-            <Option selected>Newest</Option>
+            <Select onChange={handleSort}>
+            <Option>Newest</Option>
             <Option>Best Sellers</Option>
             <Option>Price Low to High</Option>
             <Option>Price High to Low</Option>
             </Select>
           </Filter>
         </FilterContainer>
-        <Products />
+        <Products category={category} filters={filters} sort={sort}/>
         <Footer />
       </ProductListContainer>
     </>
