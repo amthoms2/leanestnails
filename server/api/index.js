@@ -10,10 +10,16 @@ const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart');
 const orderRoute = require('./routes/order');
 const stripeRoute = require("./routes/stripe");
-const cors = require("cors")
+const cors = require("cors");
 // const path = require('path')
 //helps use an absolute path
+// const SERVER_CONFIGS = require('./constants/server');
+// const configureServer = require('./server');
+// const configureRoutes = require('./routes');
+// configureServer(app);
+// configureRoutes(app);
 const port = 8080
+
 
 dotenv.config();
 
@@ -42,8 +48,6 @@ app.get('/', (req, res) => {
   res.send('Hello Nails!')
 })
 
-
 app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
-
