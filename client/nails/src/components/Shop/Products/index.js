@@ -12,7 +12,7 @@ const Products = ({category, filters, sort}) => {
   useEffect(() => {
     const getProducts = async () => {
       try{
-        const res = await axios.get("http://localhost:8080/api/products");
+        const res = await axios.get("http://localhost:8080/api/products?category=0");
         console.log(res.data)
       } catch(err){
 
