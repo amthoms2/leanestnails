@@ -83,6 +83,7 @@ const Product = () => {
   const productId = location.pathname.split("/")[2];
 
   const [product, setProduct] = useState({});
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -95,6 +96,18 @@ const Product = () => {
     }
     getProduct()
   }, [productId])
+
+  const handleQty = (type) => {
+    if(type === 'minus' && qty > 1){
+      setQty(qty - 1)
+    } else if (type === 'plus') {
+      setQty(qty + 1)
+    }
+  }
+
+  // useEffect(() => {
+
+  // }, [qty])
 
   return (
     <>
@@ -111,9 +124,9 @@ const Product = () => {
             <Price>${product.price}</Price>
             <AddContainer>
               <AmountContainer>
-                <AiOutlineMinus />
-                <Amount>1</Amount>
-                <AiOutlinePlus />
+                <AiOutlineMinus onClick={()=>handleQty('minus')}/>
+                <Amount>{qty}</Amount>
+                <AiOutlinePlus onClick={()=>handleQty('plus')}/>
               </AmountContainer>
               <Button>Add To Cart</Button>
             </AddContainer>
