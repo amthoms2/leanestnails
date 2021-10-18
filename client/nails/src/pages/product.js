@@ -105,9 +105,9 @@ const Product = () => {
     }
   }
 
-  // useEffect(() => {
+  const handleClick = () => {
 
-  // }, [qty])
+  }
 
   return (
     <>
@@ -128,7 +128,7 @@ const Product = () => {
                 <Amount>{qty}</Amount>
                 <AiOutlinePlus onClick={()=>handleQty('plus')}/>
               </AmountContainer>
-              <Button>Add To Cart</Button>
+              <Button onclick={handleClick}>Add To Cart</Button>
             </AddContainer>
           </Information>
         </ProductWrapper>
