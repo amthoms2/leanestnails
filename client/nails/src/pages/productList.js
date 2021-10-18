@@ -40,7 +40,7 @@ const ProductList = () => {
   // console.log(location.pathname.split("/")[2])
   const category = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
-  const [sort, setSort] = useState("newest");
+  const [sort, setSort] = useState('sort');
 
   const handleFilters = (evt) => {
     const val = evt.target.value;
@@ -65,17 +65,17 @@ const ProductList = () => {
         <FilterContainer>
           <Filter><FilterText>Filter Products: </FilterText>
             <Select name="color" onChange={handleFilters}>
-              <Option disabled>Color</Option>
-              <Option>Black</Option>
-              <Option>White</Option>
-              <Option>Red</Option>
-              <Option>Blue</Option>
-              <Option>Yellow</Option>
-              <Option>Green</Option>
-              <Option>Multicolor</Option>
+              <Option disabled selected>Color</Option>
+              <Option>black</Option>
+              <Option>white</Option>
+              <Option>red</Option>
+              <Option>blue</Option>
+              <Option>yellow</Option>
+              <Option>green</Option>
+              <Option>multicolor</Option>
             </Select>
             <Select name="shape" onChange={handleFilters}>
-            <Option disabled>Shape</Option>
+              <Option disabled selected>Shape</Option>
               <Option>Almond</Option>
               <Option>Long Stiletto</Option>
               <Option>Short Oval</Option>
@@ -85,8 +85,8 @@ const ProductList = () => {
 
           <Filter><FilterText>Sort Products: </FilterText>
             <Select onChange={handleSort}>
+            <Option disabled selected>Sort</Option>
             <Option>Newest</Option>
-            <Option>Best Sellers</Option>
             <Option>Price Low to High</Option>
             <Option>Price High to Low</Option>
             </Select>

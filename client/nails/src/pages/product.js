@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import img from '../images/harley.png'
 import ShopNav from '../components/Shop/ShopNav'
@@ -6,6 +7,7 @@ import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Footer from '../components/Footer'
 import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
 import { mobile } from '../responsive'
+import axios from 'axios'
 
 export const ProductContainer = styled.div`
 `
@@ -77,6 +79,23 @@ export const Button = styled.button`
   }
 `
 const Product = () => {
+  const location = useLocation();
+  const productId = location.pathname.split("/")[2];
+
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try{
+        const res = await axios.get('http://localhost:8080/api/products/find/' + productId)
+        setProduct(res.data)
+      }catch(err){
+
+      }
+    }
+    getProduct()
+  }, [productId])
+
   return (
     <>
       <ProductContainer>
@@ -84,12 +103,12 @@ const Product = () => {
         <ShopAnnouncements />
         <ProductWrapper>
           <ImageContainer>
-            <Image src={img}/>
+            <Image src={product.img}/>
           </ImageContainer>
           <Information>
-            <Title>Harley Nails</Title>
-            <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Description>
-            <Price>$$$</Price>
+            <Title>{product.title}</Title>
+            <Description>{product.desc}</Description>
+            <Price>${product.price}</Price>
             <AddContainer>
               <AmountContainer>
                 <AiOutlineMinus />
