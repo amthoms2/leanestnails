@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios"
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import StripeCheckout from "react-stripe-checkout";
 import { useSelector } from "react-redux";
 // import { useEffect, useState } from "react"
 // import { userRequest } from "../requestMethods"
@@ -36,6 +39,11 @@ import {
   Button,
 } from "./CartElements";
 
+// const STRIPE_PUBLISHABLE = process.env.STRIPE_KEY;
+const STRIPE_PUBLISHABLE = "pk_test_51JiqwFECtP9ThSLbWLNLoLc1DNRH7JCSYlfC4wRo1CB6yM6BXU8DXqLY8KMI8hHcJw0GlvvzvFfxlBGbzO75LaY800kdacfPPk";
+
+const fromDollarToCent = (amount) => parseInt(amount * 100);
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
@@ -45,27 +53,31 @@ const Cart = () => {
     } else return 0;
   };
 
-  // const [stripeToken, setStripeToken] = useState(null);
-  // const history = useHistory();
+  const [stripeToken, setStripeToken] = useState(null);
+  const history = useHistory();
 
-  // const onToken = (token) => {
-  //   setStripeToken(token);
-  // };
-
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       const res = await userRequest.post("/checkout/payment", {
-  //         tokenId: stripeToken.id,
-  //         amount: 500,
-  //       });
-  //       history.push("/success", {
-  //         stripeData: res.data,
-  //         products: cart, });
-  //     } catch {}
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, cart.total, history]);
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+console.log(stripeToken)
+  useEffect(() => {
+    const makeReq = async () => {
+      try {
+        const res = await axios.post('http://localhost:8080/api/checkout/payment', {
+          tokenId: stripeToken.id,
+          amount: fromDollarToCent(cart.total)
+          }
+         );
+         console.log('res --->',res.data)
+         alert('Payment successful')
+        // history.push("/success");
+      } catch(err) {
+        console.log(err);
+        alert('Payment Error')
+      }
+    };
+    stripeToken && makeReq()
+  }, [stripeToken, cart.total, history]);
 
   return (
     <CartContainer>
@@ -129,7 +141,18 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total + shipping()}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <StripeCheckout
+              name='The Leanest Nails'
+              // image=''
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total + shipping()}`}
+              amount={fromDollarToCent(cart.total + shipping())}
+              token={onToken}
+              stripeKey={STRIPE_PUBLISHABLE}
+              >
+              <Button>CHECKOUT NOW</Button>
+              </StripeCheckout>
           </Summary>
         </BottomContainer>
       </CartWrapper>
