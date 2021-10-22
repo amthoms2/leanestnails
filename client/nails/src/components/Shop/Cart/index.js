@@ -9,6 +9,12 @@ import { CartContainer, CartWrapper, Title, TopContainer, TopButton, TopTexts, T
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
+
+  const shipping = () => {
+    return 5.99
+    }
+
+
   // const [stripeToken, setStripeToken] = useState(null);
   // const history = useHistory();
 
@@ -57,17 +63,17 @@ const Cart = () => {
                     <b>ID:</b> {product._id}
                   </ProductId>
                   <ProductType>
-                    <b>Type:</b> {product.categories[0]}
+                    <b>Shape:</b> {product.shape}
                   </ProductType>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
                   <AiOutlinePlus />
-                  <ProductAmount>2</ProductAmount>
+                  <ProductAmount>{product.qty}</ProductAmount>
                   <AiOutlineMinus />
                 </ProductAmountContainer>
-                <ProductPrice>$ {product.price}</ProductPrice>
+                <ProductPrice>$ {product.price * product.qty}</ProductPrice>
               </PriceDetail>
             </ProductContainer>))}
             <Hr />
@@ -77,19 +83,19 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemPrice>$ 5.99</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
+            {/* <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
+            </SummaryItem> */}
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total + shipping()}</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>
