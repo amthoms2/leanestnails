@@ -1,19 +1,49 @@
-import React from 'react'
-import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
-import { useSelector } from "react-redux"
+import React from "react";
+import { Link } from "react-router-dom";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useSelector } from "react-redux";
 // import { useEffect, useState } from "react"
 // import { userRequest } from "../requestMethods"
 // import { useHistory } from "react-router"
 // import img from '../../../images/beautybeast.jpg'
-import { CartContainer, CartWrapper, Title, TopContainer, TopButton, TopTexts, TopText, BottomContainer, Information, ProductContainer, ProductDetail, Image, Details, ProductName, ProductId, ProductType, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, Hr, Summary, SummaryTitle, SummaryItem, SummaryItemText, SummaryItemPrice, Button } from './CartElements'
+import {
+  CartContainer,
+  CartWrapper,
+  Title,
+  TopContainer,
+  TopButton,
+  TopTexts,
+  TopText,
+  BottomContainer,
+  Information,
+  ProductContainer,
+  ProductDetail,
+  Image,
+  Details,
+  ProductName,
+  ProductId,
+  ProductType,
+  PriceDetail,
+  ProductAmountContainer,
+  ProductAmount,
+  ProductPrice,
+  Hr,
+  Summary,
+  SummaryTitle,
+  SummaryItem,
+  SummaryItemText,
+  SummaryItemPrice,
+  Button,
+} from "./CartElements";
 
 const Cart = () => {
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
 
   const shipping = () => {
-    return 5.99
-    }
-
+    if (cart.total > 0) {
+      return 5.99;
+    } else return 0;
+  };
 
   // const [stripeToken, setStripeToken] = useState(null);
   // const history = useHistory();
@@ -42,7 +72,9 @@ const Cart = () => {
       <CartWrapper>
         <Title>YOUR BAG</Title>
         <TopContainer>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <Link to="/products/press-ons">
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
@@ -52,38 +84,38 @@ const Cart = () => {
         <BottomContainer>
           <Information>
             {cart.products.map((product) => (
-            <ProductContainer>
-              <ProductDetail>
-                <Image src={product.img} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> {product.title}
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> {product._id}
-                  </ProductId>
-                  <ProductType>
-                    <b>Shape:</b> {product.shape}
-                  </ProductType>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <AiOutlinePlus />
-                  <ProductAmount>{product.qty}</ProductAmount>
-                  <AiOutlineMinus />
-                </ProductAmountContainer>
-                <ProductPrice>$ {product.price * product.qty}</ProductPrice>
-              </PriceDetail>
-            </ProductContainer>))}
+              <ProductContainer>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductType>
+                      <b>Shape:</b> {product.shape}
+                    </ProductType>
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <AiOutlinePlus />
+                    <ProductAmount>{product.qty}</ProductAmount>
+                    <AiOutlineMinus />
+                  </ProductAmountContainer>
+                  <ProductPrice>$ {product.price * product.qty}</ProductPrice>
+                </PriceDetail>
+              </ProductContainer>
+            ))}
             <Hr />
-
           </Information>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -102,7 +134,7 @@ const Cart = () => {
         </BottomContainer>
       </CartWrapper>
     </CartContainer>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
