@@ -11,7 +11,6 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleBar = () => {
-    console.log('hello')
     setIsOpen(!isOpen)
   }
 

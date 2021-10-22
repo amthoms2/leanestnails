@@ -15,11 +15,14 @@ const ShopNav = () => {
             <Center><Logo>Leanest Nails</Logo></Center>
             <Right>
               <Link to='/signin'><MenuOffering>Sign In</MenuOffering></Link>
+
+              <Link to='/cart'>
               <MenuOffering>
               <Badge badgeContent={qty} color="primary">
                 <FaShoppingCart />
                 </Badge>
               </MenuOffering>
+              </Link>
             </Right>
             </NavWrapper>
       </NavContainer>

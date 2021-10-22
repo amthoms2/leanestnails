@@ -1,10 +1,36 @@
 import React from 'react'
 import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
-import img1 from '../../../images/beautybeast.jpg'
-import img2 from '../../../images/alicenails.jpg'
+import { useSelector } from "react-redux"
+// import { useEffect, useState } from "react"
+// import { userRequest } from "../requestMethods"
+// import { useHistory } from "react-router"
+// import img from '../../../images/beautybeast.jpg'
 import { CartContainer, CartWrapper, Title, TopContainer, TopButton, TopTexts, TopText, BottomContainer, Information, ProductContainer, ProductDetail, Image, Details, ProductName, ProductId, ProductType, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, Hr, Summary, SummaryTitle, SummaryItem, SummaryItemText, SummaryItemPrice, Button } from './CartElements'
 
 const Cart = () => {
+  const cart = useSelector(state => state.cart);
+  // const [stripeToken, setStripeToken] = useState(null);
+  // const history = useHistory();
+
+  // const onToken = (token) => {
+  //   setStripeToken(token);
+  // };
+
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await userRequest.post("/checkout/payment", {
+  //         tokenId: stripeToken.id,
+  //         amount: 500,
+  //       });
+  //       history.push("/success", {
+  //         stripeData: res.data,
+  //         products: cart, });
+  //     } catch {}
+  //   };
+  //   stripeToken && makeRequest();
+  // }, [stripeToken, cart.total, history]);
+
   return (
     <CartContainer>
       <CartWrapper>
@@ -19,18 +45,19 @@ const Cart = () => {
         </TopContainer>
         <BottomContainer>
           <Information>
+            {cart.products.map((product) => (
             <ProductContainer>
               <ProductDetail>
-                <Image src={img2} />
+                <Image src={product.img} />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> Beauty & the Beast Press Ons
+                    <b>Product:</b> {product.title}
                   </ProductName>
                   <ProductId>
-                    <b>ID:</b> 93813718293
+                    <b>ID:</b> {product._id}
                   </ProductId>
                   <ProductType>
-                    <b>Type:</b> Oval
+                    <b>Type:</b> {product.categories[0]}
                   </ProductType>
                 </Details>
               </ProductDetail>
@@ -40,34 +67,11 @@ const Cart = () => {
                   <ProductAmount>2</ProductAmount>
                   <AiOutlineMinus />
                 </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
+                <ProductPrice>$ {product.price}</ProductPrice>
               </PriceDetail>
-            </ProductContainer>
+            </ProductContainer>))}
             <Hr />
-            <ProductContainer>
-              <ProductDetail>
-                <Image src={img1} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Harley Press Ons
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductType>
-                    <b>Type:</b> Pointy
-                  </ProductType>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <AiOutlinePlus />
-                  <ProductAmount>1</ProductAmount>
-                  <AiOutlineMinus />
-                </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
-              </PriceDetail>
-            </ProductContainer>
+
           </Information>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
