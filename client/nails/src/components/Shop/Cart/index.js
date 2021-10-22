@@ -62,15 +62,18 @@ const Cart = () => {
 console.log(stripeToken)
   useEffect(() => {
     const makeReq = async () => {
+
       try {
         const res = await axios.post('http://localhost:8080/api/checkout/payment', {
           tokenId: stripeToken.id,
-          amount: fromDollarToCent(cart.total)
+          amount: fromDollarToCent(cart.total + 5.99)
           }
          );
          console.log('res --->',res.data)
-         alert('Payment successful')
-        // history.push("/success");
+        //  alert('Payment successful')
+        history.push("/cart/success", {
+          data: res.data
+        });
       } catch(err) {
         console.log(err);
         alert('Payment Error')

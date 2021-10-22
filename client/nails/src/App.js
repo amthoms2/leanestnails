@@ -10,6 +10,7 @@ import SignUp from './components/Account/Signup'
 import Cart from './pages/cart'
 import ProductList from './pages/productList'
 import Product from './pages/product'
+import Success from './pages/success'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/products/:category' component={ProductList} exact />
         <Route path='/product/:id' component={Product} exact />
         <Route path='/cart' component={Cart} exact />
+        <Route path='/cart/success' component={Success} exact />
         <Route path='/signin' component={SignIn} exact />
         {/* <Route path="/signin">{1 ? <Redirect to="/" /> : <SignIn />}</Route> */}
         <Route path='/signup' component={SignUp} exact />
