@@ -26,7 +26,7 @@ function App() {
         <Route path='/product/:id' component={Product} exact />
         <Route path='/cart' component={Cart} exact />
         <Route path='/cart/success' component={Success} exact />
-        <Route path="/signin">{user ? <Redirect to="/" /> : <SignIn />}</Route>
+        <Route path="/signin">{user ? <Redirect to="/shop" /> : <SignIn />}</Route>
         <Route path='/signup' component={SignUp} exact />
         {/* <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
