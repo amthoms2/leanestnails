@@ -215,4 +215,6 @@ export const BackDrop = styled(motion.div)`
 
 export const Error = styled.span`
   color: red;
+  font-size: 15px;
+  padding-bottom: 20px;
 `;

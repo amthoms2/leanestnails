@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import './App.css'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
@@ -14,7 +15,7 @@ import Success from './pages/success'
 
 function App() {
   // eslint-disable-next-line
-  const user = true;
+  const user = useSelector(state => state.user)
   return (
     <Router>
       <Switch>
@@ -25,8 +26,7 @@ function App() {
         <Route path='/product/:id' component={Product} exact />
         <Route path='/cart' component={Cart} exact />
         <Route path='/cart/success' component={Success} exact />
-        <Route path='/signin' component={SignIn} exact />
-        {/* <Route path="/signin">{1 ? <Redirect to="/" /> : <SignIn />}</Route> */}
+        <Route path="/signin">{user ? <Redirect to="/" /> : <SignIn />}</Route>
         <Route path='/signup' component={SignUp} exact />
         {/* <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
