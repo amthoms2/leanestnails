@@ -13,6 +13,8 @@ import Product from './pages/product'
 import Success from './pages/success'
 
 function App() {
+  // eslint-disable-next-line
+  const user = true;
   return (
     <Router>
       <Switch>

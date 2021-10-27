@@ -1,8 +1,9 @@
 // eslint-disable-next-line
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-// eslint-disable-next-line
-import { FaFacebookF, FaInstagram, FaGoogle } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import login from '../../redux/api'
+import { FaFacebookF, FaGoogle } from 'react-icons/fa';
 import {
   MainContainer,
   Title,
@@ -17,9 +18,29 @@ import {
   StyledIcon,
   Form,
   Signup,
-} from "./SigninElements";
+  Error
+} from './SigninElements';
 
 const Signin = () => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  // eslint-disable-next-line
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleChange = (evt) => {
+    if(evt.target.name === 'username') {
+      setUsername(evt.target.value)
+    } else if (evt.target.name === 'password'){
+      setPassword(evt.target.value)
+    }
+  }
+
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    login(dispatch, { username, password });
+  };
 
   return (
     <>
@@ -27,12 +48,13 @@ const Signin = () => {
         <MainContainer>
           <Title>Welcome</Title>
           <Form>
-            <StyledInput type="text" placeholder="Email" />
-            <StyledInput type="password" placeholder="Password" />
+            <StyledInput type="text" name='username' placeholder="Email" onChange={handleChange} />
+            <StyledInput type="password" name='password' placeholder="Password"  onChange={handleChange} />
           </Form>
           <ButtonContainer>
-            <StyledButton>SIGN IN</StyledButton>
+            <StyledButton onClick={handleClick} disabled={isFetching}>SIGN IN</StyledButton>
           </ButtonContainer>
+          {error && <Error>Something went wrong...</Error>}
           <LoginWith>OR LOGIN WITH</LoginWith>
           <HorizontalRule />
           <IconsContainer>

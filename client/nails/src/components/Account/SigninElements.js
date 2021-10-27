@@ -166,6 +166,10 @@ export const StyledButton = styled.button`
   color: white;
   border-radius: 2rem;
   cursor: pointer;
+  &:disabled{
+    color: #01bf71;
+    cursor: not-allowed;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -209,3 +213,6 @@ export const BackDrop = styled(motion.div)`
 //   color: ${(props) => props.type === "link" && "white"};
 // `
 
+export const Error = styled.span`
+  color: red;
+`;

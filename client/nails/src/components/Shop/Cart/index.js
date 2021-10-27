@@ -59,7 +59,6 @@ const Cart = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-console.log(stripeToken)
   useEffect(() => {
     const makeReq = async () => {
 
@@ -69,10 +68,10 @@ console.log(stripeToken)
           amount: fromDollarToCent(cart.total + 5.99)
           }
          );
-         console.log('res --->',res.data)
         //  alert('Payment successful')
         history.push("/cart/success", {
-          data: res.data
+          data: res.data,
+          products: cart
         });
       } catch(err) {
         console.log(err);
@@ -80,7 +79,7 @@ console.log(stripeToken)
       }
     };
     stripeToken && makeReq()
-  }, [stripeToken, cart.total, history]);
+  }, [stripeToken, cart, cart.total, history]);
 
   return (
     <CartContainer>
