@@ -1,10 +1,26 @@
-import Topbar from "./components/TobBar"
+import Topbar from "./components/TobBar";
+import Sidebar from "./components/Sidebar";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+`
+
+const Pages = styled.div`
+  flex: 4;
+  background-color: green;
+`
 
 function App() {
   return (
-    <div>
+    <>
       <Topbar />
-    </div>
+      <MainContainer>
+        <Sidebar />
+        <Pages>pages</Pages>
+      </MainContainer>
+    </>
   );
 }
 
