@@ -38,5 +38,6 @@ export const StyledButton = styled.button`
   padding: 5px 7px;
   border: none;
   border-radius: 10px;
-  background-color: ${({type}) => type==="Approved" ? '#01bf71' : '#d80000'}
+  background-color: ${({type}) => type==="Approved" ? '#01bf71' : type==="Declined" ? '#d80000' : '#FCE205'};
+
 `

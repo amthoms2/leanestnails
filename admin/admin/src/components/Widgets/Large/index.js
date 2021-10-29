@@ -46,6 +46,18 @@ const LargeWidget = () => {
             </Status>
           </TableRow>
 
+          <TableRow>
+            <User>
+            <Image src={img} />
+              <Username>Cody Bork</Username>
+            </User>
+            <Date>2 Nov 2021</Date>
+            <Amount>$159.99</Amount>
+            <Status>
+              <Button type="Pending"/>
+            </Status>
+          </TableRow>
+
         </Table>
       </LargeContainer>
     </>
