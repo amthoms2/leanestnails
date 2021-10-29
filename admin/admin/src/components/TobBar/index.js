@@ -10,7 +10,7 @@ const Topbar = () => {
       <TopbarContainer>
         <TopbarWrapper>
           <Logo>Leana Admin</Logo>
-          <Left>left</Left>
+          <Left></Left>
           <Right>
             <Icon>
               <NotificationsNone />

@@ -1,16 +1,13 @@
 import Topbar from "./components/TobBar";
 import Sidebar from "./components/Sidebar";
+import Home from "./pages/home";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin-top: 30px;
 `
 
-const Pages = styled.div`
-  flex: 4;
-  background-color: green;
-`
 
 function App() {
   return (
@@ -18,7 +15,7 @@ function App() {
       <Topbar />
       <MainContainer>
         <Sidebar />
-        <Pages>pages</Pages>
+        <Home />
       </MainContainer>
     </>
   );
