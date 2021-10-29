@@ -17,20 +17,31 @@ export const Image = styled.img`
 `;
 
 export const Table = styled.table`
-
+  width: 100%;
+  border-spacing: 20px;
 `
 
 export const TableRow = styled.tr``
 
-export const TableHead = styled.td``
+export const TableHead = styled.th`
+  text-align: left ;
+`
 
-export const User = styled.div``
+export const User = styled.td`
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+`
 
 export const Username = styled.span``
 
-export const Date = styled.td``
+export const Date = styled.td`
+   font-weight: 300;
+`
 
-export const Amount = styled.td``
+export const Amount = styled.td`
+ font-weight: 300;
+`
 
 export const Status = styled.td``
 

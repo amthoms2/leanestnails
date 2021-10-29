@@ -19,9 +19,7 @@ const LargeWidget = () => {
             <TableHead>Amount</TableHead>
             <TableHead>Status</TableHead>
           </TableRow>
-        </Table>
 
-        <Table>
           <TableRow>
             <User>
             <Image src={img} />
