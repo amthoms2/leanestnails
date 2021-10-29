@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ArrowDownward, ArrowUpward} from "@material-ui/icons"
 
 export const InformationContainer = styled.div`
   width: 100%;
@@ -45,6 +46,12 @@ export const Sub = styled.span`
 export const Icon = styled.span`
   font-size: 14px;
   margin-left: 5px;
-  color: ${(danger) => (danger ? "#f50407" : "#01bf71")};
 `;
 
+export const ArrowUp = styled(ArrowUpward)`
+  color: #01bf71;
+`
+
+export const ArrowDown = styled(ArrowDownward)`
+  color: red;
+`

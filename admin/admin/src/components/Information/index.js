@@ -1,6 +1,6 @@
 import React from 'react'
-import {ArrowDownward, ArrowUpward} from "@material-ui/icons"
-import {InformationContainer, InfoItem, MoneyContainer, Price, Rate, Sub, Title, Icon} from "./InformationElements"
+// import {ArrowDownward, ArrowUpward} from "@material-ui/icons"
+import {InformationContainer, InfoItem, MoneyContainer, Price, Rate, Sub, Title, Icon, ArrowUp, ArrowDown} from "./InformationElements"
 
 const Information = () => {
   return (
@@ -10,7 +10,7 @@ const Information = () => {
           <Title>Revenue</Title>
         <MoneyContainer>
           <Price>$50</Price>
-          <Rate>-11 <Icon><ArrowDownward color="danger"/></Icon></Rate>
+          <Rate>-11 <Icon><ArrowDown /></Icon></Rate>
           </MoneyContainer>
           <Sub>last month</Sub>
         </InfoItem>
@@ -19,7 +19,7 @@ const Information = () => {
           <Title>Sales</Title>
         <MoneyContainer>
           <Price>$3400</Price>
-          <Rate>-1.4 <Icon><ArrowDownward color="danger"/></Icon></Rate>
+          <Rate>-1.4 <Icon><ArrowDown /></Icon></Rate>
           </MoneyContainer>
           <Sub>last month</Sub>
         </InfoItem>
@@ -28,7 +28,7 @@ const Information = () => {
           <Title>Costs</Title>
         <MoneyContainer>
           <Price>$2400</Price>
-          <Rate>1.9<Icon><ArrowUpward /></Icon></Rate>
+          <Rate>1.9<Icon><ArrowUp color="safe"/></Icon></Rate>
           </MoneyContainer>
           <Sub>last month</Sub>
         </InfoItem>
