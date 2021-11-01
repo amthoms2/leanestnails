@@ -11,9 +11,7 @@ const UserList = () => {
   const [data, setData] = useState(rowsData);
 
   const deleteButton = (id) => {
-    console.log(id)
     const filteredRow = data.filter((row) => row.id !== id);
-    console.log(filteredRow)
     setData(filteredRow);
   };
 

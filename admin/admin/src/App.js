@@ -2,6 +2,7 @@ import Topbar from "./components/TobBar";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/home";
 import UserList from "./pages/userList";
+import User from "./pages/user"
 import styled from "styled-components";
 import {
   BrowserRouter as Router,
@@ -31,6 +32,15 @@ function App() {
             <Route path="/users">
               <UserList />
             </Route>
+
+            <Route path="/users">
+              <UserList />
+            </Route>
+
+            <Route path="/user/:userId">
+              <User />
+            </Route>
+
             </Switch>
           </MainContainer>
       </Router>
