@@ -12,7 +12,9 @@ const UserList = () => {
 
   const deleteButton = (id) => {
     console.log(id)
-    setData(data.filter((row) => row.id !== id), console.log(data.filter((row) => row.id !== id)));
+    const filteredRow = data.filter((row) => row.id !== id);
+    console.log(filteredRow)
+    setData(filteredRow);
   };
 
   const columns = [
@@ -74,7 +76,7 @@ const UserList = () => {
     <>
       <UserListContainer>
       <DataGrid
-        rows={rowsData}
+        rows={data}
         columns={columns}
         pageSize={10}
         rowsPerPageOptions={[5]}
