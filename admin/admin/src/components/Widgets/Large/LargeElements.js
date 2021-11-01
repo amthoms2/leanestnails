@@ -4,6 +4,7 @@ export const LargeContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 5px 12px 7px rgba(0, 0, 0, 0.35);
+  padding: 20px;
 `
 export const Title = styled.h3`
   font-size: 22px;

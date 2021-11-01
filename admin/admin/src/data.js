@@ -48,3 +48,13 @@ export const userData = [
     "Active User": 3453,
   },
 ];
+
+export const rowsData = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', username: 'jsw', email: 'john@gmail.com', transaction: '$10' },
+
+  { id: 2, lastName: 'White', firstName: 'Snow', username: 'jsw', email: 'john@gmail.com', transaction: '$80' },
+
+  { id: 3, lastName: 'Thomas', firstName: 'Raven', username: 'jsw', email: 'john@gmail.com', transaction: '$190' },
+
+  { id: 4, lastName: 'Keys', firstName: 'Alicia', username: 'jsw', email: 'john@gmail.com', transaction: '$100' },
+];

@@ -5,9 +5,9 @@ import {LargeContainer, Title, Table, TableHead, TableRow, User, Image, Username
 const LargeWidget = () => {
 
   const Button = ({type}) => {
-    console.log(type)
   return <StyledButton type={type}>{type}</StyledButton>
   }
+
   return (
     <>
       <LargeContainer>
