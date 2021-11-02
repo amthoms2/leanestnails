@@ -50,6 +50,23 @@ export const userData = [
   },
 ];
 
+
+export const productData = [
+  {
+    name: 'Jan',
+    "Sales": 4000,
+  },
+  {
+    name: 'Feb',
+    "Sales": 3000,
+  },
+  {
+    name: 'Mar',
+    "Sales": 2000,
+  },
+
+];
+
 export const rowsData = [
   { id: 1, lastName: 'Snow', firstName: 'Jon', username: 'jsw', email: 'john@gmail.com', transaction: '$10' },
 

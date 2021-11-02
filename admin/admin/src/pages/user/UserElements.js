@@ -32,7 +32,7 @@ export const UserShow = styled.div`
   flex: 1;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 12px 7px rgba(0, 0, 0, 0.35);
 `;
 
 export const Top = styled.div`
@@ -76,7 +76,7 @@ export const UserUpdate = styled.div`
   flex: 2;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 12px 7px rgba(0, 0, 0, 0.35);
   margin-left: 20px;
 `;
 
@@ -105,4 +105,21 @@ export const Input = styled.input`
   width: 250px;
   height: 30px;
   border-bottom: 1px solid gray;
+`;
+
+export const Right = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+
+export const UpdateButton = styled.button`
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #03217b;
+  color: #fff;
+
 `;

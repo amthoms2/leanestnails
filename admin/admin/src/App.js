@@ -5,6 +5,8 @@ import UserList from "./pages/userList";
 import User from "./pages/user"
 import NewUser from "./pages/newUser"
 import ProductList from "./pages/productList"
+import Product from "./pages/product"
+import NewProduct from "./pages/newProduct"
 import styled from "styled-components";
 import {
   BrowserRouter as Router,
@@ -48,13 +50,13 @@ function App() {
               <ProductList />
             </Route>
 
-            {/* <Route path="/products/:productsId">
+            <Route path="/product/:productsId">
               <Product />
             </Route>
 
             <Route path="/newProduct">
               <NewProduct/>
-            </Route> */}
+            </Route>
 
             </Switch>
           </MainContainer>

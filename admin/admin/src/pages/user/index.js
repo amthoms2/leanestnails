@@ -26,7 +26,9 @@ import {
   Form,
   UpdateItem,
   Left,
+  Right,
   Input,
+  UpdateButton,
 } from "./UserElements";
 
 const User = () => {
@@ -36,7 +38,7 @@ const User = () => {
         <UserTitle>
           <Title>Edit User</Title>
           <Link to="/newUser">
-            <UserButton>Create</UserButton>
+            <UserButton>Create User</UserButton>
           </Link>
         </UserTitle>
 
@@ -103,6 +105,9 @@ const User = () => {
                   <Input type="text" placeholder="Chicago, Il"></Input>
                 </UpdateItem>
               </Left>
+              <Right>
+              <UpdateButton>Update</UpdateButton>
+              </Right>
             </Form>
           </UserUpdate>
         </UserDisplay>
