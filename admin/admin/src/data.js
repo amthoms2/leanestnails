@@ -1,3 +1,4 @@
+
 export const userData = [
   {
     name: 'Jan',
@@ -58,3 +59,13 @@ export const rowsData = [
 
   { id: 4, lastName: 'Keys', firstName: 'Alicia', username: 'jsw', email: 'john@gmail.com', transaction: '$100' },
 ];
+
+export const productsRowsData = [
+  { id: 1, name: 'Cinderella Press Ons', img: require('./nailflower.jpg').default, stock: 12, status: "active", price: '$55' },
+
+  { id: 2, name: 'Aladdin Press Ons', img: require('./nailflower.jpg').default, stock: 4, status: "active", price: '$45' },
+
+  { id: 3, name: 'Princess Tiana Press Ons', img: require('./nailflower.jpg').default, stock: 3, status: "active", price: '$65' },
+
+  { id: 4, name: 'The Office Custom Press Ons', img: require('./nailflower.jpg').default, stock: 1, status: "active", price: '$85' },
+]

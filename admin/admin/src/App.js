@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import UserList from "./pages/userList";
 import User from "./pages/user"
 import NewUser from "./pages/newUser"
+import ProductList from "./pages/productList"
 import styled from "styled-components";
 import {
   BrowserRouter as Router,
@@ -26,12 +27,9 @@ function App() {
           <MainContainer>
             <Sidebar />
             <Switch>
+
             <Route exact path="/">
               <Home />
-            </Route>
-
-            <Route path="/users">
-              <UserList />
             </Route>
 
             <Route path="/users">
@@ -45,6 +43,18 @@ function App() {
             <Route path="/newuser">
               <NewUser />
             </Route>
+
+            <Route path="/products">
+              <ProductList />
+            </Route>
+
+            {/* <Route path="/products/:productsId">
+              <Product />
+            </Route>
+
+            <Route path="/newProduct">
+              <NewProduct/>
+            </Route> */}
 
             </Switch>
           </MainContainer>

@@ -11,17 +11,17 @@ const NewUser = () => {
       <Form>
         <Item>
           <label>Full Name</label>
-          <Input type="text" placeholder="John Snow"></Input>
+          <Input type="text" placeholder="Full Name"></Input>
         </Item>
 
         <Item>
           <label>Username</label>
-          <Input type="text" placeholder="John"></Input>
+          <Input type="text" placeholder="username"></Input>
         </Item>
 
         <Item>
           <label>Email</label>
-          <Input type="email" placeholder="jsnow@gmail.com"></Input>
+          <Input type="email" placeholder="email"></Input>
         </Item>
 
         <Item>
@@ -31,12 +31,12 @@ const NewUser = () => {
 
         <Item>
           <label>Phone</label>
-          <Input type="text" placeholder="573-335-6789"></Input>
+          <Input type="text" placeholder="phone"></Input>
         </Item>
 
         <Item>
           <label>Address</label>
-          <Input type="text" placeholder="Chicago | IL"></Input>
+          <Input type="text" placeholder="City, State"></Input>
         </Item>
 
         <NewUserButton>Create</NewUserButton>
