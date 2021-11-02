@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./pages/home";
 import UserList from "./pages/userList";
 import User from "./pages/user"
+import NewUser from "./pages/newUser"
 import styled from "styled-components";
 import {
   BrowserRouter as Router,
@@ -39,6 +40,10 @@ function App() {
 
             <Route path="/user/:userId">
               <User />
+            </Route>
+
+            <Route path="/newuser">
+              <NewUser />
             </Route>
 
             </Switch>

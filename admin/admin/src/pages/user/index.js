@@ -5,6 +5,7 @@ import {
   MailOutline,
   LocationSearching,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import {
   UserContainer,
   UserTitle,
@@ -34,7 +35,9 @@ const User = () => {
       <UserContainer>
         <UserTitle>
           <Title>Edit User</Title>
-          <UserButton>Create</UserButton>
+          <Link to="/newUser">
+            <UserButton>Create</UserButton>
+          </Link>
         </UserTitle>
 
         <UserDisplay>

@@ -11,9 +11,7 @@ export const UserTitle = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled.h2`
-
-`;
+export const Title = styled.h2``;
 
 export const UserButton = styled.button`
   width: 80px;
@@ -24,6 +22,7 @@ export const UserButton = styled.button`
   cursor: pointer;
   color: #fff;
   font-size: 16px;
+  font-weight: 600;
 `;
 export const UserDisplay = styled.div`
   display: flex;
@@ -35,7 +34,6 @@ export const UserShow = styled.div`
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 `;
-
 
 export const Top = styled.div`
   display: flex;

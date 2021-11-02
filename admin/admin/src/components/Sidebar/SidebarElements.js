@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link  } from 'react-router-dom'
 
 export const SidebarContainer = styled.div`
   flex: 1;
@@ -36,4 +37,7 @@ export const ListItem = styled.li`
     background: ${({primary}) => (primary ? '#fff' : '#01BF71')};
   }
 `
-
+export const Links = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`
