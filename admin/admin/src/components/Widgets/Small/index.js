@@ -26,7 +26,6 @@ const SmallWidget = () => {
         const res = await axios.get(
           "http://localhost:8080/api/users/?new=true", config
         );
-        console.log('res', res)
         setUsers(res.data);
       } catch (err) {
         console.log(err);
