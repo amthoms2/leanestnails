@@ -2,12 +2,14 @@ import Topbar from "./components/TobBar";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/home";
 import UserList from "./pages/userList";
-import User from "./pages/user"
-import NewUser from "./pages/newUser"
-import ProductList from "./pages/productList"
-import Product from "./pages/product"
-import NewProduct from "./pages/newProduct"
+import User from "./pages/user";
+import NewUser from "./pages/newUser";
+import ProductList from "./pages/productList";
+import Product from "./pages/product";
+import NewProduct from "./pages/newProduct";
+import Login from "./pages/login";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,44 +24,57 @@ const MainContainer = styled.div`
 `;
 
 function App() {
+
+  const admin = useSelector((state) => {
+    // console.log(state.user)
+    return state.user.currentUser.isAdmin
+  });
+
   return (
     <>
       <Router>
-          <Topbar />
-          <MainContainer>
-            <Sidebar />
-            <Switch>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
 
-            <Route exact path="/">
-              <Home />
-            </Route>
+          {admin && (
+            <>
+              <Topbar />
+              <MainContainer>
+                <Sidebar />
 
-            <Route path="/users">
-              <UserList />
-            </Route>
+                <Route exact path="/">
+                  <Home />
+                </Route>
 
-            <Route path="/user/:userId">
-              <User />
-            </Route>
+                <Route path="/users">
+                  <UserList />
+                </Route>
 
-            <Route path="/newuser">
-              <NewUser />
-            </Route>
+                <Route path="/user/:userId">
+                  <User />
+                </Route>
 
-            <Route path="/products">
-              <ProductList />
-            </Route>
+                <Route path="/newuser">
+                  <NewUser />
+                </Route>
 
-            <Route path="/product/:productsId">
-              <Product />
-            </Route>
+                <Route path="/products">
+                  <ProductList />
+                </Route>
 
-            <Route path="/newProduct">
-              <NewProduct/>
-            </Route>
+                <Route path="/product/:productsId">
+                  <Product />
+                </Route>
 
-            </Switch>
-          </MainContainer>
+                <Route path="/newProduct">
+                  <NewProduct />
+                </Route>
+              </MainContainer>
+            </>
+          )}
+        </Switch>
       </Router>
     </>
   );

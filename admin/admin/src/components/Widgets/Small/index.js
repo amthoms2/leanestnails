@@ -1,52 +1,61 @@
-import React from 'react'
-import img from "../../../nailflower.jpg"
-import {SmallContainer, Title, List, ListItem, Image, User, Username, UserTitle, Button, VisibilityIcon} from "./SmallElements"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import img from "../../../nailflower.jpg";
+import {
+  SmallContainer,
+  Title,
+  List,
+  ListItem,
+  Image,
+  User,
+  Username,
+  Button,
+  VisibilityIcon,
+} from "./SmallElements";
+
+let config = {
+  headers:  { token: `Bearer ${JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken}` }
+}
 
 const SmallWidget = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8080/api/users/?new=true", config
+        );
+        console.log('res', res)
+        setUsers(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUsers();
+  }, []);
+
   return (
     <>
       <SmallContainer>
         <Title>New Members</Title>
         <List>
-          <ListItem>
-          <Image src={img} />
-            <User>
-              <Username>Corbin</Username>
-              <UserTitle>Basketball</UserTitle>
-            </User>
-            <Button>
-              <VisibilityIcon style={{fontSize: '23px'}} />
-              Display
-            </Button>
-          </ListItem>
-
-          <ListItem>
-          <Image src={img} />
-            <User>
-              <Username>Taylor</Username>
-              <UserTitle>President </UserTitle>
-            </User>
-            <Button>
-              <VisibilityIcon style={{fontSize: '23px'}} />
-              Display
-            </Button>
-          </ListItem>
-
-          <ListItem>
-          <Image src={img} />
-            <User>
-              <Username>Kelsey</Username>
-              <UserTitle>The pianist</UserTitle>
-            </User>
-            <Button>
-              <VisibilityIcon style={{fontSize: '23px'}} />
-              Display
-            </Button>
-          </ListItem>
+          {users.map((user) => (
+            <ListItem key={user._id}>
+              <Image src={img} />
+              <User>
+                <Username>{user.username}</Username>
+              </User>
+              <Button>
+                <VisibilityIcon style={{ fontSize: "23px" }} />
+                Display
+              </Button>
+            </ListItem>
+          ))}
         </List>
       </SmallContainer>
     </>
-  )
-}
+  );
+};
 
-export default SmallWidget
+export default SmallWidget;
