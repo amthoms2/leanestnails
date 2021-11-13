@@ -34,6 +34,7 @@ const Information = () => {
           "http://localhost:8080/api/orders/income",
           config
         );
+        console.log(res)
         setCost(res.data);
 
         if (res.data[0]._id > res.data[1]._id) {
@@ -52,7 +53,7 @@ const Information = () => {
     <>
       <InformationContainer>
         <InfoItem>
-          <Title>Revenue</Title>
+          <Title>Sales</Title>
           <MoneyContainer>
             <Price>
               $
@@ -61,7 +62,7 @@ const Information = () => {
                 : cost.length > 0 && cost[1].total}
             </Price>
             <Rate>
-              %{Math.floor(percentage)}{" "}
+              {Math.floor(percentage)}%{" "}
 
               {cost.length > 0 && cost[0]._id > cost[1]._id && cost[0].total < cost[1].total ? (
                 <Icon>
@@ -84,9 +85,9 @@ const Information = () => {
         </InfoItem>
 
         <InfoItem>
-          <Title>Sales</Title>
+          <Title>Orders</Title>
           <MoneyContainer>
-            <Price>$3400</Price>
+            <Price>23</Price>
             <Rate>
               -1.4{" "}
               <Icon>
