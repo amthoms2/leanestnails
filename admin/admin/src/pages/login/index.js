@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import login from "../../redux/api";
+import {login} from "../../redux/api";
 import { InputContainer, Input, Button } from "./LoginElements";
 
 const Login = () => {

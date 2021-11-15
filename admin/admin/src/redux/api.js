@@ -1,5 +1,6 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
-import axios from 'axios'
+import { getProduct, getProductFailure, getProductSuccess } from "./productRedux";
+import axios from 'axios';
 
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
 
@@ -8,7 +9,7 @@ let config = {
 }
 
 
-const login = async (dispatch, user) => {
+export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     const res = await axios.post('http://localhost:8080/api/auth/login', user, config);
@@ -18,4 +19,14 @@ const login = async (dispatch, user) => {
   }
 };
 
-export default login;
+//get products from server, dispatch to productList
+export const getProducts = async (dispatch) => {
+  dispatch(getProduct());
+  try {
+    const res = await axios.get('http://localhost:8080/api/products', config);
+    dispatch(getProductSuccess(res.data));
+  } catch (err) {
+    dispatch(getProductFailure());
+  }
+};
+

@@ -3,10 +3,10 @@ import { mobile } from '../../../responsive'
 
 export const NavContainer = styled.div`
   height: 60px;
-  // z-index: 1;
+  /* // z-index: 1;
   // width: 100%;
   //padding: 0 24px;
-  // max-width: 1100px;
+  // max-width: 1100px; */
   ${mobile({ height: "50px" })}
 
 `

@@ -1,11 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/api"
 import {productsRowsData} from "../../data"
 import { ProductListContainer, ProductItem, Image, EditButton, DeleteButton} from './ProductListElements'
 
 const ProductList = () => {
   const [data, setData] = useState(productsRowsData);
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.product.products);
+
+  useEffect(() => {
+    getProducts(dispatch)
+  }, [dispatch])
 
   const deleteButton = (id) => {
     const filteredRow = data.filter((row) => row.id !== id);
@@ -13,7 +21,7 @@ const ProductList = () => {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 95 },
+    { field: '_id', headerName: 'ID', width: 230 },
     {
       field: "product",
       headerName: "Product",
@@ -23,12 +31,12 @@ const ProductList = () => {
           <ProductItem>
             <Image src={params.row.img} alt="">
             </Image>
-            {params.row.name}
+            {params.row.title}
           </ProductItem>
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 160 },
+    { field: "inStock", headerName: "Stock", width: 160 },
     {
       field: "price",
       headerName: "Price",
@@ -57,9 +65,10 @@ const ProductList = () => {
     <>
     <ProductListContainer>
     <DataGrid
-        rows={data}
+        rows={products}
         columns={columns}
         pageSize={10}
+        getRowId={row=>row._id}
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick

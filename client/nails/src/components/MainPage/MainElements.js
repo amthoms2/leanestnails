@@ -34,7 +34,7 @@ export const LandingPageBackground = styled.video`
 export const MainContent = styled.div`
   z-index: 1;
   max-width: 120px;
-  posiiton: absolute;
+  position: absolute;
   padding: 8px 24px;
   display: flex;
   flex-direction: column;

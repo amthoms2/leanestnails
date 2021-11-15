@@ -36,11 +36,12 @@ const Information = () => {
         );
         console.log(res)
         setCost(res.data);
+          console.log(1 - res.data[0].total / res.data[1].total);
 
         if (res.data[0]._id > res.data[1]._id) {
-          setPercentage((res.data[1].total * 100) / res.data[0].total - 100);
+          setPercentage((1 - res.data[0].total / res.data[1].total) * 100);
         } else {
-          setPercentage((res.data[0].total * 100) / res.data[1].total - 100);
+          setPercentage((1 - res.data[1].total / res.data[0].total) * 100);
         }
       } catch (err) {
         console.log(err);
