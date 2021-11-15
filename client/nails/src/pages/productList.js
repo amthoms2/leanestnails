@@ -80,6 +80,7 @@ const ProductList = () => {
               <Option>Long Stiletto</Option>
               <Option>Short Oval</Option>
               <Option>Short Square</Option>
+              <Option>Other</Option>
             </Select>
           </Filter>
 

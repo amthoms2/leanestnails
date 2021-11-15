@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/api"
-import {productsRowsData} from "../../data"
+// import {productsRowsData} from "../../data"
 import { ProductListContainer, ProductItem, Image, EditButton, DeleteButton} from './ProductListElements'
+import { deleteProducts } from '../../redux/api';
 
 const ProductList = () => {
-  const [data, setData] = useState(productsRowsData);
+  // const [data, setData] = useState(productsRowsData);
   const dispatch = useDispatch();
   const products = useSelector(state => state.product.products);
 
@@ -16,8 +17,9 @@ const ProductList = () => {
   }, [dispatch])
 
   const deleteButton = (id) => {
-    const filteredRow = data.filter((row) => row.id !== id);
-    setData(filteredRow);
+    deleteProducts(id, dispatch)
+    // const filteredRow = data.filter((row) => row.id !== id);
+    // setData(filteredRow);
   };
 
   const columns = [
@@ -49,11 +51,11 @@ const ProductList = () => {
         renderCell: (params) => {
           return (
             <>
-              <Link to={"/product/" + params.row.id}>
+              <Link to={"/product/" + params.row._id}>
                 <EditButton>Edit</EditButton>
               </Link>
               <DeleteButton
-            onClick={() => deleteButton(params.row.id)}
+            onClick={() => deleteButton(params.row._id)}
             />
             </>
           );
@@ -68,7 +70,7 @@ const ProductList = () => {
         rows={products}
         columns={columns}
         pageSize={10}
-        getRowId={row=>row._id}
+        getRowId={(row)=>row._id}
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick

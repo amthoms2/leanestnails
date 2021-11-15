@@ -66,6 +66,8 @@ router.get("/", verifyTokenandAdmin, async (req, res) => {
 
 //ADMIN GET MONTHLY INCOME
 router.get("/income", verifyTokenandAdmin, async (req, res) => {
+  const productId = req.query.productId;
+
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
   const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
@@ -75,7 +77,9 @@ router.get("/income", verifyTokenandAdmin, async (req, res) => {
       {
         $match:
         {
-          createdAt: { $gte: prevMonth }
+          createdAt: { $gte: prevMonth }, ...(productId && {
+            products: {$elemMatch: { productId: productId }},
+          })
          }
         },
       {
