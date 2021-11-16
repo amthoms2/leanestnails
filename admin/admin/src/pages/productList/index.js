@@ -7,8 +7,6 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 import app from "../../firebase";
 
-
-
 import { getProducts } from "../../redux/api";
 // import {productsRowsData} from "../../data"
 import {
@@ -18,9 +16,8 @@ import {
   EditButton,
   DeleteButton,
 } from "./ProductListElements";
-import {ProductButton} from "../product/ProductElements"
+import { ProductButton } from "../product/ProductElements";
 import { deleteProducts } from "../../redux/api";
-
 
 const ProductList = () => {
   // const [data, setData] = useState(productsRowsData);
@@ -32,15 +29,6 @@ const ProductList = () => {
   }, [dispatch]);
 
   const deleteButton = (id, img) => {
-    const storage = getStorage(app);
-    const desertRef = ref(storage, img);
-  // Delete the file
-deleteObject(desertRef).then(() => {
-  // File deleted successfully
-}).catch((error) => {
-  console.log(error)
-});
-
     // deleteProducts(id, dispatch)
 
     // const filteredRow = data.filter((row) => row.id !== id);
@@ -50,17 +38,31 @@ deleteObject(desertRef).then(() => {
     // if(confirmed) {
     //   deleteProducts(id, dispatch)
     // }
-  confirmAlert({
+    confirmAlert({
       title: "Confirm to submit",
-      message: "Are you sure you want to do this? This item will be permantly deleted.",
+      message:
+        "Are you sure you want to do this? This item will be permantly deleted.",
       buttons: [
         {
           label: "Yes",
-          onClick: () => deleteProducts(id, dispatch),
+          onClick: () => {
+            deleteProducts(id, dispatch);
+            // Delete the img file with product!
+            const storage = getStorage(app);
+            const desertRef = ref(storage, img);
+            deleteObject(desertRef)
+              .then(() => {
+                // File deleted successfully
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+
+          },
         },
         {
           label: "No",
-          onClick: () => console.log('row Id', id)
+          onClick: () => console.log("row Id", id),
         },
       ],
       closeOnEscape: true,
@@ -99,7 +101,9 @@ deleteObject(desertRef).then(() => {
             <Link to={"/product/" + params.row._id}>
               <EditButton>Edit</EditButton>
             </Link>
-            <DeleteButton onClick={() => deleteButton(params.row._id, params.row.img)} />
+            <DeleteButton
+              onClick={() => deleteButton(params.row._id, params.row.img)}
+            />
           </>
         );
       },
@@ -110,8 +114,12 @@ deleteObject(desertRef).then(() => {
     <>
       <ProductListContainer>
         <Link to="/newProduct">
-            <ProductButton style={{ position: "relative", right: "10px", bottom: "10px" }}>Create New Product</ProductButton>
-          </Link>
+          <ProductButton
+            style={{ position: "relative", right: "10px", bottom: "10px" }}
+          >
+            Create New Product
+          </ProductButton>
+        </Link>
 
         <DataGrid
           rows={products}

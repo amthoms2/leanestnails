@@ -1,4 +1,4 @@
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice, current } = require("@reduxjs/toolkit");
 
 export const productSlice = createSlice({
   name: "product",
@@ -30,11 +30,12 @@ export const productSlice = createSlice({
     deleteProductSuccess: (state, action) => {
       state.isFetching = false;
       //splice takes the current i and the second argument determines how many units to delete
-
+      console.log('state products', current(state.products))
+      const data = current(state)
       //i dont have to write action.payload.id
-      state.products.splice(
-        state.products.findIndex(item => item._id = action.payload), 1
-      );
+      const idx = data.products.findIndex(item => item._id = action.payload);
+      console.log('spliceData', idx)
+     state = data.products.splice(idx, 1);
     },
     deleteProductFailure: (state) => {
       state.isFetching = false;

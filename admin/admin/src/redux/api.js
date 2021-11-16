@@ -35,7 +35,7 @@ export const deleteProducts = async (id, dispatch) => {
   dispatch(deleteProduct());
   try {
     const res = await axios.delete(`http://localhost:8080/api/products/${id}`, config);
-    dispatch(deleteProductSuccess(id));
+    await dispatch(deleteProductSuccess(id));
     console.log(res.data)
   } catch (err) {
     dispatch(deleteProductFailure());
