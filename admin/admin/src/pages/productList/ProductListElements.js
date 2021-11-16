@@ -3,6 +3,7 @@ import { DeleteOutline } from "@material-ui/icons";
 
 export const ProductListContainer = styled.div`
   flex: 4;
+  text-align: right;
 `;
 
 export const ProductItem = styled.div`
