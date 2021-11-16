@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   getStorage,
   ref,
@@ -21,6 +22,7 @@ const NewProduct = () => {
   const [inputs, setInputs] = useState({});
   const [imgFile, setImgFile] = useState(null);
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const handleFile = (evt) => {
     setImgFile(evt.target.files[0]);
@@ -35,6 +37,7 @@ const NewProduct = () => {
   const handleClick = (evt) => {
     evt.preventDefault();
     //this will prevent files w/ same name to override each other
+    if(imgFile) {
     const fileName = new Date().getTime() + imgFile.name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
@@ -64,20 +67,39 @@ const NewProduct = () => {
         }
       },
       (error) => {
-        // Handle unsuccessful uploads
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        switch (error.code) {
+          case "storage/unauthorized":
+            // User doesn't have permission to access the object
+            break;
+          case "storage/canceled":
+            // User canceled the upload
+            break;
+
+          // ...
+
+          case "storage/unknown":
+            // Unknown error occurred, inspect error.serverResponse
+            break;
+          default:
+            console.log(error)
+        }
       },
       () => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = {...inputs, img:downloadURL };
-          addProducts(product, dispatch)
+          const product = { ...inputs, img: downloadURL };
+          addProducts(product, dispatch);
         });
       }
     );
+    history.push("/products");
+    } else {
+      alert('Missing Fields')
+    }
   };
-  console.log(inputs);
-  console.log(imgFile);
+
   return (
     <>
       <NewProductContainer>
@@ -168,7 +190,10 @@ const NewProduct = () => {
             </select>
           </Item>
 
-          <NewProductButton onClick={handleClick}>Create</NewProductButton>
+          <NewProductButton
+          onClick={handleClick}
+          disabled={!inputs.title || !imgFile || !inputs.desc || !inputs.price || !inputs.inStock || !inputs.categories || !inputs.shape || !inputs.color}
+          >Create</NewProductButton>
         </Form>
       </NewProductContainer>
     </>

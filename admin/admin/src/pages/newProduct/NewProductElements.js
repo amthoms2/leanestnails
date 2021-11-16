@@ -33,4 +33,8 @@ export const NewProductButton = styled.button`
     margin-top: 30px;
     font-size: 16px;
     cursor: pointer;
+
+    ${({ disabled }) => disabled && `
+    background: rgb(235,235,228);
+  `}
 `
