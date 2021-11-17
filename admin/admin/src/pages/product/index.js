@@ -41,8 +41,6 @@ let config = {
 
 const Product = () => {
   const location = useLocation();
-
-  console.log(location.pathname)
   const productId = location.pathname.split("/")[2];
 
   const [productStats, setProductStats ] = useState([]);

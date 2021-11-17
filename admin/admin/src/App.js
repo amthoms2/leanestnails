@@ -8,6 +8,7 @@ import ProductList from "./pages/productList";
 import Product from "./pages/product";
 import NewProduct from "./pages/newProduct";
 import Login from "./pages/login";
+import Transactions from "./pages/transactions";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import {
@@ -70,6 +71,10 @@ function App() {
 
                 <Route path="/newProduct">
                   <NewProduct />
+                </Route>
+
+                <Route path="/transactions">
+                  <Transactions />
                 </Route>
               </MainContainer>
             </>

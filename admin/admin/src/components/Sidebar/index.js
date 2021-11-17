@@ -51,10 +51,12 @@ const Sidebar = () => {
               </ListItem>
               </Links>
 
+           <Links to="/transactions">
               <ListItem>
                 <AttachMoney />
                 Transactions
               </ListItem>
+              </Links>
 
               <ListItem>
                 <BarChart />

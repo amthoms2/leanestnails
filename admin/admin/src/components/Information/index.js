@@ -34,9 +34,8 @@ const Information = () => {
           "http://localhost:8080/api/orders/income",
           config
         );
-        console.log(res)
         setCost(res.data);
-          console.log(1 - res.data[0].total / res.data[1].total);
+          // console.log(1 - res.data[0].total / res.data[1].total);
 
         if (res.data[0]._id > res.data[1]._id) {
           setPercentage((1 - res.data[0].total / res.data[1].total) * 100);
@@ -49,7 +48,6 @@ const Information = () => {
     };
     getCost();
   }, [percentage]);
-  console.log("cost", cost);
   return (
     <>
       <InformationContainer>

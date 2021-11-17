@@ -60,7 +60,6 @@ export const addProducts = async (product, dispatch) => {
   try {
     const res = await axios.post(`http://localhost:8080/api/products/`, product, config);
     dispatch(addProductSuccess(res.data));
-    console.log(res.data)
   } catch (err) {
     dispatch(addProductFailure());
   }

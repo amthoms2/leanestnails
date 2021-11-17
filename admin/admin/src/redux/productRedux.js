@@ -30,7 +30,6 @@ export const productSlice = createSlice({
     deleteProductSuccess: (state, action) => {
       state.isFetching = false;
       const updatedProducts = current(state.products).filter(item => item._id !== action.payload);
-      console.log('updated state', updatedProducts)
       state.products = updatedProducts
     },
     deleteProductFailure: (state) => {
