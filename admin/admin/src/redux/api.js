@@ -1,5 +1,6 @@
-import { loginFailure, loginStart, loginSuccess } from "./userRedux";
-import { getProduct, getProductFailure, getProductSuccess, deleteProduct, deleteProductFailure, deleteProductSuccess, updateProduct, updateProductFailure, updateProductSuccess, addProductFailure, addProduct, addProductSuccess } from "./productRedux";
+import { loginFailure, loginStart, loginSuccess, getUser, getUserSuccess, getUserFailure } from "./userRedux";
+import { getProduct, getProductFailure, getProductSuccess, deleteProduct, deleteProductFailure, deleteProductSuccess, updateProduct, updateProductFailure, updateProductSuccess, addProductFailure, addProduct, addProductSuccess, } from "./productRedux";
+import{ getTransaction, getTransactionSuccess, getTransactionFailure } from "./transactionsRedux"
 import axios from 'axios';
 
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
@@ -19,7 +20,30 @@ export const login = async (dispatch, user) => {
   }
 };
 
-//get products from server, dispatch to productList
+//get users from db, dispatch to UserList
+export const getUsers = async (dispatch) => {
+  dispatch(getUser());
+  try {
+    const res = await axios.get('http://localhost:8080/api/users', config);
+    dispatch(getUserSuccess(res.data));
+  } catch (err) {
+    dispatch(getUserFailure());
+  }
+};
+
+//get transactions from db, dispatch to Transactions
+export const getTransactions = async (dispatch) => {
+  dispatch(getTransaction());
+  try {
+    const res = await axios.get('http://localhost:8080/api/orders', config);
+    dispatch(getTransactionSuccess(res.data));
+  } catch (err) {
+    dispatch(getTransactionFailure());
+  }
+};
+
+
+//get products from db, dispatch to productList
 export const getProducts = async (dispatch) => {
   dispatch(getProduct());
   try {

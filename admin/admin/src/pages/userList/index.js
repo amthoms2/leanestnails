@@ -1,22 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { DataGrid } from "@material-ui/data-grid";
+import { useDispatch, useSelector } from "react-redux";
+import {getUsers} from "../../redux/api"
 // import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import {rowsData} from "../../data"
+// import axios from "axios";
+// import {rowsData} from "../../data"
 import { UserListContainer, EditButton, DeleteButton } from "./UserListElements"
 
-
 const UserList = () => {
+  // const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
 
-  const [data, setData] = useState(rowsData);
+  useEffect(() => {
+    getUsers(dispatch);
+  }, [dispatch]);
 
-  const deleteButton = (id) => {
-    const filteredRow = data.filter((row) => row.id !== id);
-    setData(filteredRow);
-  };
+  const users = useSelector((state) => state.user.users);
+
+
+//   useEffect(() => {
+//     const getUsers = async () => {
+//       try {
+//         const res = await axios.get(
+//           "http://localhost:8080/api/users", config
+//         );
+//         setUsers(res.data);
+//       } catch (err) {
+//         console.log(err);
+//       }
+//     };
+//     getUsers();
+//   }, []);
+// console.log(users)
+
+  // const deleteButton = (id) => {
+  //   const filteredRow = data.filter((row) => row.id !== id);
+  //   setData(filteredRow);
+  // };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 95 },
+    { field: '_id', headerName: 'UserID', width: 150 },
     {
       field: 'firstName',
       headerName: 'First name',
@@ -33,7 +57,7 @@ const UserList = () => {
       field: 'username',
       headerName: 'Username',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'email',
@@ -43,10 +67,8 @@ const UserList = () => {
       editable: true,
     },
     {
-      field: 'transaction',
-      headerName: 'Transaction',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: true,
+      field: 'orders',
+      headerName: 'Transactions',
       width: 160,
     },
     {
@@ -56,11 +78,11 @@ const UserList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/user/" + params.row.id}>
+            <Link to={"/user/" + params.row._id}>
               <EditButton>Edit</EditButton>
             </Link>
             <DeleteButton
-            onClick={() => deleteButton(params.row.id)}
+            // onClick={() => deleteButton(params.row.id)}
             />
           </>
         );
@@ -74,10 +96,11 @@ const UserList = () => {
     <>
       <UserListContainer>
       <DataGrid
-        rows={data}
+        rows={users}
         columns={columns}
         pageSize={10}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[10]}
+        getRowId={(row) => row._id}
         checkboxSelection
         disableSelectionOnClick
       />

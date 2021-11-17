@@ -1,6 +1,7 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import userReducer from './userRedux'
-import productReducer from './productRedux'
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import userReducer from './userRedux';
+import productReducer from './productRedux';
+import transactionsReducer from "./transactionsRedux"
 import {
   persistStore,
   persistReducer,
@@ -20,7 +21,7 @@ const persistConfig = {
 };
 
 //product reducer doesnt have to be stored here; I chose to store here
-const rootReducer = combineReducers({ user: userReducer, product: productReducer });
+const rootReducer = combineReducers({ user: userReducer, product: productReducer, transaction: transactionsReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
