@@ -71,7 +71,16 @@ const ProductList = () => {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 230 },
+    {
+      field: "_id", headerName: "ID", width: 230,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={"/product/" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
+          </>
+        );
+      },
+   },
     {
       field: "product",
       headerName: "Product",

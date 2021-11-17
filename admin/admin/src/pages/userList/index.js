@@ -40,7 +40,16 @@ const UserList = () => {
   // };
 
   const columns = [
-    { field: '_id', headerName: 'UserID', width: 150 },
+    {
+      field: '_id', headerName: 'UserID', width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={"/user/find/:" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
+          </>
+        );
+   },
+     },
     {
       field: 'firstName',
       headerName: 'First name',
