@@ -13,6 +13,19 @@ const userSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.isFetching = false;
+      console.log('pr',localStorage.getItem("persist:root"))
+      const persistRoot = JSON.parse(localStorage.getItem("persist:root"));
+      console.log('hit', persistRoot)
+      const updatedPersistRoot =
+      {
+        ...persistRoot,
+        user: {
+          ...persistRoot.user,
+          currentUser: action.payload
+        }
+      }
+      console.log(JSON.stringify(updatedPersistRoot));
+      localStorage.setItem("persist:root", JSON.stringify(updatedPersistRoot));
       state.currentUser = action.payload;
     },
     loginFailure: (state) => {

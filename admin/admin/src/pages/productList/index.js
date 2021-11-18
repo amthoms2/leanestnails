@@ -6,7 +6,6 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 import app from "../../firebase";
-
 import { getProducts } from "../../redux/api";
 // import {productsRowsData} from "../../data"
 import {
@@ -41,7 +40,7 @@ const ProductList = () => {
     confirmAlert({
       title: "Confirm to submit",
       message:
-        "Are you sure you want to do this? This item will be permantly deleted.",
+        "Are you sure you want to do this? This item will be permanently deleted.",
       buttons: [
         {
           label: "Yes",
@@ -62,7 +61,7 @@ const ProductList = () => {
         },
         {
           label: "No",
-          onClick: () => console.log("row Id", id),
+          // onClick: () => console.log("row Id", id),
         },
       ],
       closeOnEscape: true,
@@ -76,7 +75,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
+            <Link to={"/products/" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
           </>
         );
       },
@@ -84,7 +83,7 @@ const ProductList = () => {
     {
       field: "product",
       headerName: "Product",
-      width: 280,
+      width: 160,
       renderCell: (params) => {
         return (
           <ProductItem>
@@ -95,6 +94,7 @@ const ProductList = () => {
       },
     },
     { field: "inStock", headerName: "Stock", width: 160 },
+    { field: "quantity", headerName: "Qty", width: 160 },
     {
       field: "price",
       headerName: "Price",

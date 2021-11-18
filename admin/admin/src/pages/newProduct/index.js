@@ -157,6 +157,16 @@ const NewProduct = () => {
           </Item>
 
           <Item>
+            <label>Qty</label>
+            <Input
+              name="quantity"
+              type="number"
+              placeholder="Qty"
+              onChange={handleChange}
+            ></Input>
+          </Item>
+
+          <Item>
             <label>Category</label>
             <select name="categories" onChange={handleChange}>
               <option disabled selected></option>

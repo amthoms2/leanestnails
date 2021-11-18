@@ -65,7 +65,7 @@ function App() {
                   <ProductList />
                 </Route>
 
-                <Route path="/product/:productsId">
+                <Route path="/products/:productsId">
                   <Product />
                 </Route>
 

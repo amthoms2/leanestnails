@@ -1,12 +1,13 @@
 import { loginFailure, loginStart, loginSuccess, getUser, getUserSuccess, getUserFailure } from "./userRedux";
 import { getProduct, getProductFailure, getProductSuccess, deleteProduct, deleteProductFailure, deleteProductSuccess, updateProduct, updateProductFailure, updateProductSuccess, addProductFailure, addProduct, addProductSuccess, } from "./productRedux";
-import{ getTransaction, getTransactionSuccess, getTransactionFailure } from "./transactionsRedux"
+import{ getTransaction, getTransactionSuccess, getTransactionFailure } from "./transactionsRedux";
 import axios from 'axios';
 
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
 
+
 let config = {
-  headers:  { token: `Bearer ${JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken}` }
+  headers: { token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNWY2MDgwOTQ5NTdkZTg5ZGRhNjM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzI2MTk4MSwiZXhwIjoxNjQyNDQ1OTgxfQ.Suv0vGZ8dRzvbY8PGj3M46Dz1A5V5Nbz8ZoxC0Swh2E"}
 }
 
 
@@ -70,10 +71,10 @@ export const deleteProducts = async (id, dispatch) => {
 export const updateProducts = async (id, product, dispatch) => {
   dispatch(updateProduct());
   try {
-    const res = await axios.update(`http://localhost:8080/api/products/${id}`, config);
-    dispatch(updateProductSuccess({id, product}));
-    console.log(res.data)
+    const res = await axios.put(`http://localhost:8080/api/products/${id}`, product, config);
+    dispatch(updateProductSuccess(res.data));
   } catch (err) {
+    console.log(err)
     dispatch(updateProductFailure());
   }
 };
