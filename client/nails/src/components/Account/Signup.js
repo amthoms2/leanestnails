@@ -81,11 +81,11 @@ const SignUp = (props) => {
               transition={expandingTransition}
             /> */}
           <Form style={{ height: "35%" }}>
-            <StyledInput type="text" placeholder="First Name" />
-            <StyledInput type="text" placeholder="Last Name" />
-            <StyledInput type="email" placeholder="Email" />
-            <StyledInput type="password" placeholder="Password" />
-            <StyledInput type="password" placeholder="Confirm Password" />
+            <StyledInput name="firstName" type="text" placeholder="First Name" />
+            <StyledInput name="lastName" type="text" placeholder="Last Name" />
+            <StyledInput name="email" type="email" placeholder="Email" />
+            <StyledInput name="password" type="password" placeholder="Password" />
+            <StyledInput name="retype-password" type="password" placeholder="Confirm Password" />
           </Form>
           <ButtonContainer>
             <StyledButton>SIGN UP</StyledButton>

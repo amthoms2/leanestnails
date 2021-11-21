@@ -21,7 +21,7 @@ import {
   Error,
 } from "./SigninElements";
 
-const Signin = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -91,4 +91,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SignIn;

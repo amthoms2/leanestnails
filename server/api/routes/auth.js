@@ -8,6 +8,8 @@ const User = require("../models/User");
 //SIGN UP POST ROUTE
 router.post("/signup", async (req, res) => {
   const newUser = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     username: req.body.username,
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
@@ -44,7 +46,7 @@ router.post("/login", async (req, res) => {
           isAdmin: user.isAdmin,
         },
         process.env.JWT_SEC,
-        {expiresIn:"8d"}
+        {expiresIn:"60d"},
       );
 
     const { password, ...others } = user._doc;

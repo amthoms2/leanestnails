@@ -7,7 +7,7 @@ export const NavContainer = styled.div`
   // width: 100%;
   //padding: 0 24px;
   // max-width: 1100px; */
-  ${mobile({ height: "50px" })}
+  /* ${mobile({ height: "50px" })} */
 
 `
 

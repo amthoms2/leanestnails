@@ -13,6 +13,7 @@ import ProductList from './pages/productList'
 import Product from './pages/product'
 import Success from './pages/success'
 
+
 function App() {
   // eslint-disable-next-line
   const user = useSelector(state => state.user)
@@ -20,14 +21,15 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' component={Home} exact />
-        <Route path='/book' component={Book} exact />
-        <Route path='/shop' component={Shop} exact />
-        <Route path='/products/:category' component={ProductList} exact />
-        <Route path='/product/:id' component={Product} exact />
-        <Route path='/cart' component={Cart} exact />
-        <Route path='/cart/success' component={Success} exact />
-        <Route path="/signin">{user ? <Redirect to="/shop" /> : <SignIn />}</Route>
-        <Route path='/signup' component={SignUp} exact />
+        <Route path='/book' component={Book} />
+        <Route path='/shop' component={Shop} />
+        <Route path='/products/:category' component={ProductList} />
+        <Route path='/product/:id' component={Product}/>
+        <Route path='/cart' component={Cart}  />
+        <Route path='/cart/success' component={Success} />
+        <Route path='/signin' component={SignIn}/>
+        {/* <Route path="/signin">{user ? <Redirect to="/shop" /> : <SignIn />}</Route> */}
+        <Route path='/signup' component={SignUp}/>
         {/* <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route> */}

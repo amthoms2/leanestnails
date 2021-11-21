@@ -15,7 +15,7 @@ export const ProductContainer = styled.div``;
 export const ProductWrapper = styled.div`
   padding: 50;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection: "column" })}
+  /* ${mobile({ padding: "10px", flexDirection: "column" })} */
 `;
 export const ImageContainer = styled.div`
   flex: 1;

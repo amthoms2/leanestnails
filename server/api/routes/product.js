@@ -28,6 +28,7 @@ router.put("/:id", verifyTokenandAdmin, async (req, res) => {
       },
       { new: true }
     );
+    console.log("updatedProduct", updatedProduct);
     res.status(200).json(updatedProduct);
   } catch (err) {
     res.status(500).json(err);
@@ -64,13 +65,14 @@ router.get("/", async (req, res) => {
   try {
     let products;
 
-    if(queryNew){
-      products = await Product.find().sort({createdAt: -1}).limit(5);
-    } else if(queryCategory){
-      products = await Product.find({categories: {
-        $in: [queryCategory],
-      },
-    });
+    if (queryNew) {
+      products = await Product.find().sort({ createdAt: -1 }).limit(5);
+    } else if (queryCategory) {
+      products = await Product.find({
+        categories: {
+          $in: [queryCategory],
+        },
+      });
     } else {
       products = await Product.find();
     }
@@ -80,6 +82,5 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

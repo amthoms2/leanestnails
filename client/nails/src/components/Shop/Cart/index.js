@@ -119,7 +119,7 @@ const Cart = () => {
                     <ProductAmount>{product.qty}</ProductAmount>
                     <AiOutlineMinus />
                   </ProductAmountContainer>
-                  <ProductPrice>$ {product.price * product.qty}</ProductPrice>
+                  <ProductPrice>$ {Math.floor(product.price) * product.qty}</ProductPrice>
                 </PriceDetail>
               </ProductContainer>
             ))}
@@ -145,7 +145,6 @@ const Cart = () => {
             </SummaryItem>
             <StripeCheckout
               name='The Leanest Nails'
-              // image=''
               billingAddress
               shippingAddress
               description={`Your total is $${cart.total + shipping()}`}
