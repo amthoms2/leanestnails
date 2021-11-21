@@ -1,15 +1,10 @@
 import { loginFailure, loginStart, loginSuccess, getUser, getUserSuccess, getUserFailure } from "./userRedux";
 import { getProduct, getProductFailure, getProductSuccess, deleteProduct, deleteProductFailure, deleteProductSuccess, updateProduct, updateProductFailure, updateProductSuccess, addProductFailure, addProduct, addProductSuccess, } from "./productRedux";
 import{ getTransaction, getTransactionSuccess, getTransactionFailure } from "./transactionsRedux";
+import config from "../config";
 import axios from 'axios';
 
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
-
-
-let config = {
-  headers: { token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNWY2MDgwOTQ5NTdkZTg5ZGRhNjM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzI2MTk4MSwiZXhwIjoxNjQyNDQ1OTgxfQ.Suv0vGZ8dRzvbY8PGj3M46Dz1A5V5Nbz8ZoxC0Swh2E"}
-}
-
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());

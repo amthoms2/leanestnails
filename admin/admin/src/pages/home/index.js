@@ -1,15 +1,12 @@
-import React, { useState, useMemo, useEffect } from 'react'
-import axios from "axios"
-import Information from "../../components/Information"
-import {HomeContainer, Widgets} from "./homeElements"
-import Chart from '../../components/Chart'
+import React, { useState, useMemo, useEffect } from 'react';
+import axios from "axios";
+import Information from "../../components/Information";
+import config from "../../config";
+import {HomeContainer, Widgets} from "./homeElements";
+import Chart from '../../components/Chart';
 // import {userData} from '../../data'
-import SmallWidget from '../../components/Widgets/Small'
-import LargeWidget from '../../components/Widgets/Large'
-
-let config = {
-  headers:  { token: `Bearer ${JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken}` }
-}
+import SmallWidget from '../../components/Widgets/Small';
+import LargeWidget from '../../components/Widgets/Large';
 
 const Home = () => {
   const [stats, setStats] = useState([])

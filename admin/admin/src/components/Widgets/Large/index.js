@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import axios from "axios"
-import {format} from "timeago.js"
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import {format} from "timeago.js";
+import config from "../../../config"
 // import img from "../../../nailflower.jpg"
 import {LargeContainer, Title, Table, TableHead, TableRow, User, Username, Date, Amount, Status, StyledButton} from "./LargeElements"
-
-let config = {
-  headers:  { token: `Bearer ${JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken}` }
-}
 
 const LargeWidget = () => {
   const [orders, setOrders] = useState([]);

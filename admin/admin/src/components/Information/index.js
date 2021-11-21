@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import config from "../../config"
 // import {ArrowDownward, ArrowUpward} from "@material-ui/icons"
 import {
   InformationContainer,
@@ -13,15 +14,6 @@ import {
   ArrowUp,
   ArrowDown,
 } from "./InformationElements";
-
-let config = {
-  headers: {
-    token: `Bearer ${
-      JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.accessToken
-    }`,
-  },
-};
 
 const Information = () => {
   const [cost, setCost] = useState([]);

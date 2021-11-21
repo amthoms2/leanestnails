@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@material-ui/data-grid";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getTransactions } from '../../redux/api';
+import { getTransactions } from "../../redux/api";
 
 const TransactionsListContainer = styled.div`
   flex: 4;
@@ -14,10 +14,10 @@ const Transactions = () => {
   const dispatch = useDispatch();
   // const [orders, setOrders] = useState([]);
   const orders = useSelector((state) => state.transaction.orders);
+  const users = useSelector((state) => state.user.users);
   useEffect(() => {
     getTransactions(dispatch);
   }, [dispatch]);
-
 
   // useEffect(() => {
   //   const getOrders = async () => {
@@ -33,10 +33,21 @@ const Transactions = () => {
   //   getOrders();
   // }, []);
 
-console.log('orders',orders)
+  const returnUserFirstName = (users, rowUserId) => {
+    const validUser = users.find((user) => user._id === rowUserId);
+    return validUser.firstName;
+  }
+  console.log("orders", orders);
   const columns = [
     { field: "_id", headerName: "Transaction ID", width: 230 },
-    { field: "userId", headerName: "UserId", width: 220 },
+    {
+      field: "userId",
+      headerName: "UserId",
+      width: 220,
+      renderCell: (params) => {
+        return <>{returnUserFirstName(users, params.row.userId)}</>;
+      },
+    },
     {
       field: "createdAt",
       headerName: "Purchase Date",
@@ -48,7 +59,7 @@ console.log('orders',orders)
 
   return (
     <>
-       <TransactionsListContainer>
+      <TransactionsListContainer>
         <DataGrid
           rows={orders}
           columns={columns}
@@ -60,7 +71,7 @@ console.log('orders',orders)
         />
       </TransactionsListContainer>
     </>
-  )
-}
+  );
+};
 
-export default Transactions
+export default Transactions;

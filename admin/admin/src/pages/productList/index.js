@@ -75,7 +75,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/products/" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
+            <Link to={"/product/" + params.row._id} style={{textDecoration: "none", color: "#000000DE"}}>{params.row._id}</Link>
           </>
         );
       },

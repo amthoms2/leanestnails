@@ -28,7 +28,10 @@ function App() {
 
   const admin = useSelector((state) => {
     // console.log(state.user)
-    return state.user.currentUser.isAdmin
+    if (state.user.currentUser) {
+      return state.user.currentUser.isAdmin
+    }
+    return false
   });
 
   return (
@@ -65,7 +68,7 @@ function App() {
                   <ProductList />
                 </Route>
 
-                <Route path="/products/:productsId">
+                <Route path="/product/:productsId">
                   <Product />
                 </Route>
 

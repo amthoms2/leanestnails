@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Chart from "../../components/Chart";
 import axios from "axios";
+import config from "../../config";
 import {
   getStorage,
   ref,
@@ -38,12 +39,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 // import { updateProduct } from "../../redux/productRedux";
 import { updateProducts } from "../../redux/api";
-
-let config = {
-  headers: {
-    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNWY2MDgwOTQ5NTdkZTg5ZGRhNjM2NSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzI2MTk4MSwiZXhwIjoxNjQyNDQ1OTgxfQ.Suv0vGZ8dRzvbY8PGj3M46Dz1A5V5Nbz8ZoxC0Swh2E"
-  },
-};
 
 const Product = () => {
   const [inputs, setInputs] = useState({});
@@ -145,15 +140,7 @@ const Product = () => {
     } else {
       alert('Missing Fields')
     }
-
-    // const updatedProduct = { ...inputs };
-    // updateProducts(product._id, updatedProduct, dispatch)
   }
-
-  // useEffect(() => {
-  //   updateProduct(dispatch);
-  // }, [dispatch]);
-
 
   useEffect(() => {
     const getProductStats = async () => {
@@ -205,8 +192,8 @@ const Product = () => {
 
             <InfoBottom>
               <InfoItem>
-                <Key>id:</Key>
-                <Value>{product._id}</Value>
+                <Key>id: </Key>
+                <Value> {product._id}</Value>
               </InfoItem>
 
               <InfoItem>
@@ -245,7 +232,7 @@ const Product = () => {
               </Select>
 
               <label>Category</label>
-              <Select name="category" id="category" onChange={handleChange}>
+              <Select name="categories" id="category" onChange={handleChange}>
                 <option disabled selected></option>
                 <option value="press-ons">Press Ons</option>
                 <option value="custom">Custom Press ons</option>
