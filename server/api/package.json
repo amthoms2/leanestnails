@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5",
+    "nodemailer": "^6.7.2",
     "react-stripe-checkout": "^2.6.3",
     "stripe": "^8.179.0"
   },

@@ -43,7 +43,7 @@ const SectionInfo = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <ButtonWrapper>
-                  <Button to="home"
+                  <Button to={`${id}`}
                   smooth={true}
                   duration={500}
                   spy={true}

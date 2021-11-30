@@ -12,6 +12,8 @@ import Cart from './pages/cart'
 import ProductList from './pages/productList'
 import Product from './pages/product'
 import Success from './pages/success'
+import Gallery from "./pages/gallery";
+import Contact from "./pages/contact";
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' component={Home} exact />
+        <Route path='/gallery' component={Gallery} />
         <Route path='/book' component={Book} />
         <Route path='/shop' component={Shop} />
         <Route path='/products/:category' component={ProductList} />
@@ -28,6 +31,7 @@ function App() {
         <Route path='/cart' component={Cart}  />
         <Route path='/cart/success' component={Success} />
         <Route path='/signin' component={SignIn}/>
+        <Route path='/contact' component={Contact}/>
         {/* <Route path="/signin">{user ? <Redirect to="/shop" /> : <SignIn />}</Route> */}
         <Route path='/signup' component={SignUp}/>
         {/* <Route path="/register">

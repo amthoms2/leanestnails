@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+// const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require('path')
@@ -10,6 +11,7 @@ const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart');
 const orderRoute = require('./routes/order');
 const stripeRoute = require("./routes/stripe");
+const contactRoute = require("./routes/contact");
 const cors = require("cors");
 // const path = require('path')
 //helps use an absolute path
@@ -43,11 +45,28 @@ app.use('/api/products', productRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);
 app.use("/api/checkout", stripeRoute);
+app.use("/api/contact", contactRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello Nails!')
 })
 
+// const contactEmail = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: "***************@gmail.com",
+//     pass: "********",
+//   },
+// });
+
+// contactEmail.verify((error) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Ready to Send");
+//   }
+// });
+// console.log(process.env.EMAIL)
 app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
