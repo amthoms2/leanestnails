@@ -12,8 +12,8 @@ export const ModalBackground = styled.div`
 
 
 export const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  /* width: 800px;
+  height: 500px; */
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -22,6 +22,24 @@ export const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 10px;
+
+  @media only screen and (min-width: 350px) {
+  width: 350px;
+  height: 400px;
+  }
+
+  /* @media only screen and (min-width: 768px) {
+  width: 450px;
+  height: 400px;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 450px;
+  height: 400px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 950px;
+  height: 400px;
+  } */
 `;
 
 export const ModalImg = styled.img`
@@ -41,10 +59,5 @@ color: #141414;
 p {
   margin-bottom: 1rem;
 }
-button {
-  padding: 10px 24px;
-  background: #141414;
-  color: #fff;
-  border: none;
-}
+
 `;

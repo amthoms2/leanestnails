@@ -49,11 +49,11 @@ export const MainContainer = styled.div`
     height: 90vh;
   }
   @media only screen and (min-width: 768px) {
-    width: 80vw;
+    width: 60vw;
     height: 80vh;
   }
   @media only screen and (min-width: 1024px) {
-    width: 80vw;
+    width: 60vw;
     height: 80vh;
   }
   @media only screen and (min-width: 1280px) {

@@ -21,7 +21,7 @@ const NailOfferings = () => {
               <Icon src={Icon1}/>
                 <OfferingsH2>Manicure</OfferingsH2>
                 <OfferingsP>Description of services</OfferingsP>
-                <Modal showModal={showModal} setShowModal={setShowModal}/>
+                <Modal showModal={showModal} setShowModal={setShowModal} />
             </Card>
 
             <Card onClick={toggleModal}>
@@ -37,6 +37,7 @@ const NailOfferings = () => {
                 <OfferingsP>Description of services</OfferingsP>
                 <Modal showModal={showModal} setShowModal={setShowModal}/>
             </Card>
+
           </NailOfferingsWrapper>
       </NailOfferingsContainer>
     </>

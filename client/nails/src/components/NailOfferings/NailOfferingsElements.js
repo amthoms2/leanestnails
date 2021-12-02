@@ -27,10 +27,6 @@ export const NailOfferingsWrapper = styled.div`
   padding: 0;
   padding: 0 50px;
 
-  @media screen and (max-width: 1000px) {
-    grid-template-colums: 1fr 1fr
-  }
-
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     padding: 0 20px;

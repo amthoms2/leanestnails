@@ -47,7 +47,6 @@ const Modal = ({showModal, setShowModal}) => {
               <ModalInformation>
                 <h1>Are you ready?</h1>
                 <p>Get exclusive access to our next launch.</p>
-                <button>Close</button>
               </ModalInformation>
             </ModalWrapper>
           </animated.div>
