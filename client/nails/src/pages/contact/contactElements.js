@@ -63,7 +63,7 @@ export const MainContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 3rem 0 7rem 0;
+  margin: 3rem 0 10rem 0;
 `;
 
 export const Form = styled.form`
@@ -114,7 +114,7 @@ export const InputContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 20%;
+  height: 40%;
   width: 100%;
 `
 
@@ -125,7 +125,35 @@ export const StyledInput = styled.input`
   width: 80%;
   height: 3rem;
   padding: 1rem;
+  text-align: center;
   margin-bottom:5px;
+  border: none;
+  outline: none;
+  color: #3c354e;
+  font-size: 1rem;
+  font-weight: bold;
+  &:focus {
+    display: inline-block;
+    box-shadow: 0 0 0 0.2rem #b9abe0;
+    backdrop-filter: blur(12rem);
+    border-radius: 2rem;
+  }
+  &::placeholder {
+    color: #b9abe099;
+    font-weight: 100;
+    font-size: 1rem;
+  }
+`;
+
+export const StyledArea = styled.textarea`
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 2rem;
+  width: 80%;
+  height: 3rem;
+  padding:2.5rem;
+  text-align: center;
+  margin-bottom: 5px;
   border: none;
   outline: none;
   color: #3c354e;

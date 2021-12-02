@@ -3,6 +3,8 @@ import './App.css'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 // eslint-disable-next-line
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Home from './pages'
 import SignIn from './pages/signin'
 import Book from './pages/book'
@@ -17,11 +19,21 @@ import Contact from "./pages/contact";
 
 
 function App() {
+const ScrollToTop = ({ children }) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return children || null;
+};
   // eslint-disable-next-line
   const user = useSelector(state => state.user)
   return (
     <Router>
       <Switch>
+      <ScrollToTop>
         <Route path='/' component={Home} exact />
         <Route path='/gallery' component={Gallery} />
         <Route path='/book' component={Book} />
@@ -37,6 +49,7 @@ function App() {
         {/* <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route> */}
+        </ScrollToTop>
       </Switch>
     </Router>
   );

@@ -98,15 +98,3 @@ const Navbar = ({ toggleBar }) => {
 
 export default Navbar;
 
-// 'rafce' creates a React Arrow Function Component with ES7 module system (ES7 React/Redux/GraphQL/React-Native snippets)
-
-// import React from 'react'
-
-// const  = () => {
-//     return (s
-//         <div>
-
-//         </div>
-//     )
-
-//FaBars is the name of the bars from react-icons!

@@ -8,6 +8,7 @@ import {
   HorizontalRule,
   InputContainer,
   StyledInput,
+  StyledArea,
   StyledButton,
   ContactWrapper,
   Form,
@@ -64,8 +65,8 @@ const Contact = () => {
                 placeholder="Email"
                 onChange={handleChange}
               />
-              <StyledInput
-                type="text"
+              <StyledArea
+                type="text-area"
                 name="message"
                 placeholder="Message"
                 onChange={handleChange}
@@ -77,17 +78,18 @@ const Contact = () => {
             </ButtonContainer>
           </Form>
           <HorizontalRule />
-          <SocialLink
-            href="//www.instagram.com/theleanestnails/?hl=en."
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <IconsContainer>
+
+          <IconsContainer>
+            <SocialLink
+              href="//www.instagram.com/theleanestnails/?hl=en."
+              target="_blank"
+              aria-label="Instagram"
+            >
               <StyledIcon background={InstaBG}>
                 <FaInstagram />
               </StyledIcon>
-            </IconsContainer>
-          </SocialLink>
+            </SocialLink>
+          </IconsContainer>
         </MainContainer>
       </ContactWrapper>
     </>

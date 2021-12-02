@@ -65,6 +65,7 @@ export const OfferingsH1 = styled.h1`
   color: #fff;
   font-size: 2.5rem;
   margin-bottom: 64px;
+  font-family: cursive;
 
   @media screen and (max-width: 480px) {
     font-size: 2rem
@@ -72,7 +73,8 @@ export const OfferingsH1 = styled.h1`
 `
 
 export const OfferingsH2 = styled.h2`
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Dancing Script', cursive;
   margin-bottom: 10px;
 `
 
