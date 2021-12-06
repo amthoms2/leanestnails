@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {logout} from "../../redux/api";
+import { useSelector, useDispatch } from "react-redux";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { animateScroll as scrollUp } from "react-scroll";
@@ -17,6 +19,9 @@ import {
 
 const Navbar = ({ toggleBar }) => {
   const [scroll, setScroll] = useState(false);
+  const user = useSelector((state) => state.user.currentUser);
+  console.log("user", user);
+  const dispatch = useDispatch();
 
   const scrollChange = () => {
     if (window.scrollY >= 80) {
@@ -28,6 +33,11 @@ const Navbar = ({ toggleBar }) => {
 
   const toggleHome = () => {
     scrollUp.scrollToTop();
+  };
+
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    logout(dispatch);
   };
 
   useEffect(() => {
@@ -83,12 +93,19 @@ const Navbar = ({ toggleBar }) => {
                 </NavLinks>
               </NavItem>
               <NavItem>
-              <NavLink to="shop">Shop</NavLink>
+                <NavLink to="shop">Shop</NavLink>
               </NavItem>
             </NavMenu>
-            <NavBtn>
-              <NavBtnLink to="signin">Sign In</NavBtnLink>
-            </NavBtn>
+
+            {user ? (
+              <NavBtn>
+                <NavBtnLink onClick={handleClick}> Sign Out</NavBtnLink>
+              </NavBtn>
+            ) : (
+              <NavBtn>
+                <NavBtnLink to="signin">Sign In</NavBtnLink>
+              </NavBtn>
+            )}
           </NavContainer>
         </Nav>
       </IconContext.Provider>
@@ -97,4 +114,3 @@ const Navbar = ({ toggleBar }) => {
 };
 
 export default Navbar;
-

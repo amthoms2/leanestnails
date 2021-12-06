@@ -23,7 +23,6 @@ const Home = () => {
     <NailOfferings />
     {/* <SectionInfo {...homeObj2}/> */}
     <SectionInfo {...homeObj3}/>
-    {/* <NailOfferings /> */}
     <Footer />
     </>
   )

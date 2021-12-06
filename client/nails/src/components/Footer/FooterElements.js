@@ -76,7 +76,7 @@ export const SocialMediaWrapper = styled.div`
   }
 
 `
-
+//368 - 820
 export const Logo = styled(Link)`
   color: #fff;
   justify-self: start;
@@ -86,16 +86,19 @@ export const Logo = styled(Link)`
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  margin-right: 16px;
   font-weight: bold;
 `
 
 export const CopyRights = styled.small`
+
 color: #fff;
 margin-bottom: 16px;
 `
 
 export const SocialIcon = styled.div`
 display: flex;
+background: ${(props) => props.background};
 justify-content: space-between;
 align-items: center;
 width: 240px;
@@ -105,3 +108,19 @@ export const SocialLink = styled.a`
 color: #fff;
 font-size: 24px;
 `
+
+  export const StyledIcon = styled.div`
+  height: 2.5rem;
+  width: 2.5rem;
+  background: ${(props) => props.background};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+  color: white;
+  cursor: pointer;
+  svg {
+    width: 2.8rem;
+    height: 3.8rem;
+  }
+`;

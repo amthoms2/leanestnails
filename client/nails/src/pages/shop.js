@@ -1,4 +1,5 @@
 import React from 'react'
+// import Navbar from "../components/Navbar"
 import ShopNav from '../components/Shop/ShopNav'
 import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Slider from '../components/Shop/Slider/Slider'
@@ -11,6 +12,7 @@ const Shop = () => {
     <>
       <ShopAnnouncements />
       <ShopNav />
+      {/* <Navbar /> */}
       <Slider />
       <Categories />
       <Products />

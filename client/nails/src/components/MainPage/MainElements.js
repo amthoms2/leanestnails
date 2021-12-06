@@ -76,6 +76,10 @@ export const MainButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  button{
+    color: #43E4DB;
+  }
 `
 
 export const ArrowForward = styled(MdArrowForward)`
@@ -87,5 +91,3 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
 `
-
-//1hr40

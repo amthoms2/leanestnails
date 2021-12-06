@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import login from "../../redux/api";
+import {login} from "../../redux/api";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import {
   MainContainer,
@@ -26,7 +26,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   // eslint-disable-next-line
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching, error, email } = useSelector((state) => state.user);
 
   const handleChange = (evt) => {
     if (evt.target.name === "username") {
@@ -40,6 +40,8 @@ const SignIn = () => {
     evt.preventDefault();
     login(dispatch, { username, password });
   };
+
+
 
   return (
     <>
@@ -61,9 +63,12 @@ const SignIn = () => {
             />
           </Form>
           <ButtonContainer>
-            <StyledButton onClick={handleClick} disabled={isFetching}>
+            <StyledButton name="signin" onClick={handleClick} disabled={isFetching}>
               SIGN IN
             </StyledButton>
+            {/* <StyledButton name="signout" onClick={handleClick} disabled={isFetching}>
+              SIGN OUT
+            </StyledButton> */}
           </ButtonContainer>
           {error && <Error>Something went wrong...</Error>}
           <LoginWith>OR LOGIN WITH</LoginWith>
