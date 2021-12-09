@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import ShopNav from "../components/Shop/ShopNav";
@@ -8,7 +8,10 @@ import ShopAnnouncements from "../components/Shop/ShopNav/ShopAnnouncements";
 import Footer from "../components/Footer";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { mobile } from "../responsive";
-import { addProduct } from "../redux/cartRedux";
+import {createNewCart} from "../redux/api"
+// import { addProduct } from "../redux/cartRedux";
+
+
 
 export const ProductContainer = styled.div``;
 
@@ -84,6 +87,7 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const [qty, setQty] = useState(1);
+  const userId = useSelector((state) => state.user.currentUser._id)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -106,12 +110,12 @@ const Product = () => {
     }
   };
 
-  const handleClick = () => {
-    dispatch(
-      addProduct({ ...product, qty })
-    );
+  const handleClick = (evt) => {
+    evt.preventDefault();
+      createNewCart(dispatch, { ...product, qty, userId})
   };
 
+  console.log(userId)
   return (
     <>
       <ProductContainer>
