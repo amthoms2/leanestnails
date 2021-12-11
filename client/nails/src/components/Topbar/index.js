@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {logout} from "../../redux/api"
 import {
   TopbarContainer,
   ShutIcon,
@@ -11,14 +13,17 @@ import {
   TopbarRoute,
 } from "./TopbarElements";
 
-function handleBar(e) {
-  console.log('you clicked')
-}
-
 const TopBar = ({ isOpen, toggleBar }) => {
-  console.log({isOpen})
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    logout(dispatch);
+  };
+
   return (
-    <TopbarContainer isOpen={isOpen} onClick={handleBar}>
+    <TopbarContainer isOpen={isOpen}>
       <Icon onClick={toggleBar}>
         <ShutIcon />
       </Icon>
@@ -32,7 +37,8 @@ const TopBar = ({ isOpen, toggleBar }) => {
         </TopbarMenu>
 
         <TopBtnWrap>
-          <TopbarRoute to="/signin">Sign In</TopbarRoute>
+          {user ? <TopbarRoute onClick={handleClick}>Sign Out</TopbarRoute> : <TopbarRoute to="/signin">Sign In</TopbarRoute>}
+
         </TopBtnWrap>
       </TopbarWrapper>
     </TopbarContainer>

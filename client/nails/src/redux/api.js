@@ -38,10 +38,10 @@ export const createNewCart = async (dispatch, product) => {
   }
 }
 
-export const updateUserCart = async (dispatch, id, product) => {
+export const updateUserCart = async (dispatch, id, product, qty) => {
   dispatch(updateCartStart());
   try{
-    const res = await axios.put(`http://localhost:8080/api/cart/${id}`, id, product, config);
+    const res = await axios.put(`http://localhost:8080/api/cart/`, product, config);
     dispatch(updateCartSuccess(res.data))
   } catch(err){
     dispatch(updateCartFailure())

@@ -20,7 +20,6 @@ import {
 const Navbar = ({ toggleBar }) => {
   const [scroll, setScroll] = useState(false);
   const user = useSelector((state) => state.user.currentUser);
-  console.log("user", user);
   const dispatch = useDispatch();
 
   const scrollChange = () => {

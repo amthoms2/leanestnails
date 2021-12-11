@@ -14,7 +14,6 @@ const cartSlice = createSlice({
     addProduct: (state, action) => {
       // console.log('cart',localStorage.getItem("persist:root"))
       const persistRoot = JSON.parse(localStorage.getItem("persist:root"));
-      console.log('hit', persistRoot)
       const updatedPersistRoot =
       {
         ...persistRoot,
@@ -23,11 +22,10 @@ const cartSlice = createSlice({
           products: action.payload
         }
       };
-      console.log(JSON.stringify(updatedPersistRoot));
       localStorage.setItem("persist:root", JSON.stringify(updatedPersistRoot));
       // state.cart = action.payload;
 
-      state.qty += 1;
+      state.qty += action.payload.qty;;
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.qty;
 
@@ -41,11 +39,26 @@ const cartSlice = createSlice({
       state.isFetching = true;
     },
     updateCartSuccess: (state, action) => {
-      state.isFetching = false;
+      const persistRoot = JSON.parse(localStorage.getItem("persist:root"));
+      console.log('hit', persistRoot)
+      const updatedPersistRoot =
+      {
+        ...persistRoot,
+        cart: {
+          ...persistRoot.cart,
+          products: action.payload
+        }
+      };
+      // console.log(JSON.stringify(updatedPersistRoot));
+      localStorage.setItem("persist:root", JSON.stringify(updatedPersistRoot));
+      // state.cart = action.payload;
 
+      state.qty += action.payload.qty;;
+      state.products.push(action.payload);
+      state.total += action.payload.price * action.payload.qty;
     },
     updateCartFailure: (state) => {
-
+      state.error = true;
     },
   },
 });

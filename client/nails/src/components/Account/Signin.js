@@ -26,7 +26,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   // eslint-disable-next-line
-  const { isFetching, error, email } = useSelector((state) => state.user);
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleChange = (evt) => {
     if (evt.target.name === "username") {

@@ -118,7 +118,7 @@ console.log('cart state', cartId)
       if(!cartCheck){
         createNewCart(dispatch, { userId, ...product, qty})
       } else {
-        updateUserCart(dispatch, { cartId, ...product, qty })
+        updateUserCart(dispatch, cartId, product, qty)
       }
   };
 
