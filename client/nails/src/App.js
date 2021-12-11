@@ -40,7 +40,7 @@ const ScrollToTop = ({ children }) => {
         <Route path='/shop' component={Shop} />
         <Route path='/products/:category' component={ProductList} />
         <Route path='/product/:id' component={Product}/>
-        <Route path='/cart' component={Cart}  />
+        <Route path='/cart/:id' component={Cart}  />
         <Route path='/cart/success' component={Success} />
         <Route path='/signin' component={SignIn}/>
         <Route path='/contact' component={Contact}/>

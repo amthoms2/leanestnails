@@ -15,7 +15,8 @@ import { Badge } from "@material-ui/core";
 
 const ShopNav = () => {
   const qty = useSelector((state) => state.cart.qty);
-  return (
+  const cartId = useSelector((state) => state.cart.cart._id);
+  return(
     <>
       <NavContainer>
         <NavWrapper>
@@ -30,7 +31,7 @@ const ShopNav = () => {
               <MenuOffering>Sign In</MenuOffering>
             </Link>
 
-            <Link to="/cart">
+            <Link to={`/cart/${cartId}`}>
               <MenuOffering>
                 <Badge badgeContent={qty} color="primary">
                   <FaShoppingCart />
@@ -41,7 +42,7 @@ const ShopNav = () => {
         </NavWrapper>
       </NavContainer>
     </>
-  );
+  )
 };
 
 export default ShopNav;

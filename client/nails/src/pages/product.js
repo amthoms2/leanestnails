@@ -8,7 +8,7 @@ import ShopAnnouncements from "../components/Shop/ShopNav/ShopAnnouncements";
 import Footer from "../components/Footer";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { mobile } from "../responsive";
-import {createNewCart} from "../redux/api"
+import {createNewCart, updateUserCart} from "../redux/api"
 // import { addProduct } from "../redux/cartRedux";
 
 
@@ -87,7 +87,10 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const [qty, setQty] = useState(1);
-  const userId = useSelector((state) => state.user.currentUser._id)
+  const userId = useSelector((state) => state.user.currentUser._id);
+  const cartCheck = useSelector((state) => state.cart.cart);
+  const cartId = useSelector((state) => state.cart.cart._id);
+console.log('cart state', cartId)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -112,10 +115,13 @@ const Product = () => {
 
   const handleClick = (evt) => {
     evt.preventDefault();
-      createNewCart(dispatch, { ...product, qty, userId})
+      if(!cartCheck){
+        createNewCart(dispatch, { userId, ...product, qty})
+      } else {
+        updateUserCart(dispatch, { cartId, ...product, qty })
+      }
   };
 
-  console.log(userId)
   return (
     <>
       <ProductContainer>

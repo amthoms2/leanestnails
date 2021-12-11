@@ -1,6 +1,7 @@
 import { loginFailure, loginStart, loginSuccess, logoutStart, logoutSuccess, logoutFailure } from "./userRedux";
-import {addProductStart, addProduct, addProductFailure} from "./cartRedux";
+import {addProductStart, addProduct, addProductFailure, updateCartStart, updateCartSuccess, updateCartFailure} from "./cartRedux";
 import axios from 'axios'
+
 
 
 export const login = async (dispatch, user) => {
@@ -14,10 +15,8 @@ export const login = async (dispatch, user) => {
 };
 
 export const logout = async (dispatch) => {
-  console.log('hit')
   dispatch(logoutStart());
   try {
-    console.log('trying')
     await axios.post('http://localhost:8080/api/auth/logout');
     dispatch(logoutSuccess());
   } catch (err) {
@@ -26,16 +25,26 @@ export const logout = async (dispatch) => {
 };
 
 const config = {
-  headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU4N2MwMzNjMTEzZDc4NmZjNDg1YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mzg5ODk0MjYsImV4cCI6MTY0NDE3MzQyNn0.yNKiGPuG_Lur7Dmi7xQzEYM5Qy3RFkAAKkYNKqcyeGw`}
+  headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU4N2MwMzNjMTEzZDc4NmZjNDg1YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzkxNzczNTMsImV4cCI6MTY0NDM2MTM1M30.1fNu_HNcewPGLmQivH25D4npGuGhuKVCXd3dKdTlGPs`}
 }
 
-export const createNewCart = async (dispatch, product, qty, userId) => {
+export const createNewCart = async (dispatch, product) => {
   dispatch(addProductStart());
   try{
-    const res = await axios.post("http://localhost:8080/api/carts", product, config);
+    const res = await axios.post("http://localhost:8080/api/cart", product, config);
     dispatch(addProduct(res.data))
   } catch(err){
-    dispatch(addProductFailure)
+    dispatch(addProductFailure())
+  }
+}
+
+export const updateUserCart = async (dispatch, id, product) => {
+  dispatch(updateCartStart());
+  try{
+    const res = await axios.put(`http://localhost:8080/api/cart/${id}`, id, product, config);
+    dispatch(updateCartSuccess(res.data))
+  } catch(err){
+    dispatch(updateCartFailure())
   }
 }
 
