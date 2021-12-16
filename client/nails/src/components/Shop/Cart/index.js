@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import StripeCheckout from "react-stripe-checkout";
-import { useSelector } from "react-redux";
-// import { useEffect, useState } from "react"
-// import { userRequest } from "../requestMethods"
-// import { useHistory } from "react-router"
-// import img from '../../../images/beautybeast.jpg'
+import { useSelector, useDispatch } from "react-redux";
 import {
   CartContainer,
   CartWrapper,
@@ -38,6 +34,7 @@ import {
   SummaryItemPrice,
   Button,
 } from "./CartElements";
+import {clearCart} from "../../../redux/cartRedux"
 
 // const STRIPE_PUBLISHABLE = process.env.STRIPE_KEY;
 const STRIPE_PUBLISHABLE = "pk_test_51JiqwFECtP9ThSLbWLNLoLc1DNRH7JCSYlfC4wRo1CB6yM6BXU8DXqLY8KMI8hHcJw0GlvvzvFfxlBGbzO75LaY800kdacfPPk";
@@ -55,6 +52,7 @@ const Cart = () => {
 
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -81,6 +79,11 @@ const Cart = () => {
     stripeToken && makeReq()
   }, [stripeToken, cart, cart.total, history]);
 
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    dispatch(clearCart());
+  }
+
   return (
     <CartContainer>
       <CartWrapper>
@@ -94,6 +97,7 @@ const Cart = () => {
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <button onClick={handleClick}>Clear Cart</button>
         </TopContainer>
         <BottomContainer>
           <Information>

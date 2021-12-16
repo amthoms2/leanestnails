@@ -14,6 +14,10 @@ const CartSchema = new mongoose.Schema(
         },
       },
     ],
+    subTotal: {
+      type: Number,
+      default: 0
+    },
   },
   { timestamps: true }
 );

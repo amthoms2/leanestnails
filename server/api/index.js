@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require('path')
 const morgan = require('morgan')
+const cookieParser = require('cookie-parser');
 const userRoute = require('./routes/user')
 const authRoute = require('./routes/auth')
 const productRoute = require('./routes/product');
@@ -34,6 +35,7 @@ mongoose
 
 app.use(cors())
 app.use(morgan("dev"))
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // format of sending data via key: value pairs
 app.use(express.static(path.join(__dirname, '/public')))
@@ -42,7 +44,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use("/api/users", userRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
-app.use('/api/carts', cartRoute);
+app.use('/api/cart', cartRoute);
 app.use('/api/orders', orderRoute);
 app.use("/api/checkout", stripeRoute);
 app.use("/api/contact", contactRoute);

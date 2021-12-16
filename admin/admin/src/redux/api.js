@@ -4,8 +4,6 @@ import{ getTransaction, getTransactionSuccess, getTransactionFailure } from "./t
 import config from "../config";
 import axios from 'axios';
 
-// const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
-
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {

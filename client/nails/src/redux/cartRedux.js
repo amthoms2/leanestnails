@@ -1,34 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
+const defaultState = {
+  products: [],
+  qty: 0,
+  total: 0
+};
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    products: [],
-    qty: 0,
-    total: 0,
-  },
+  initialState: defaultState,
   reducers: {
+    clearCart: () => {
+      return defaultState
+    }
+    ,
     addProductStart: (state) => {
       state.isFetching = true;
     },
     addProduct: (state, action) => {
       // console.log('cart',localStorage.getItem("persist:root"))
       const persistRoot = JSON.parse(localStorage.getItem("persist:root"));
-      const updatedPersistRoot =
-      {
+      const updatedPersistRoot = {
         ...persistRoot,
         cart: {
           ...persistRoot.cart,
-          products: action.payload
-        }
+          products: action.payload,
+        },
       };
       localStorage.setItem("persist:root", JSON.stringify(updatedPersistRoot));
       // state.cart = action.payload;
 
-      state.qty += action.payload.qty;;
+      state.qty += action.payload.qty;
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.qty;
-
     },
     addProductFailure: (state) => {
       state.isFetching = false;
@@ -40,20 +43,18 @@ const cartSlice = createSlice({
     },
     updateCartSuccess: (state, action) => {
       const persistRoot = JSON.parse(localStorage.getItem("persist:root"));
-      console.log('hit', persistRoot)
-      const updatedPersistRoot =
-      {
+      const updatedPersistRoot = {
         ...persistRoot,
         cart: {
           ...persistRoot.cart,
-          products: action.payload
-        }
+          products: action.payload,
+        },
       };
       // console.log(JSON.stringify(updatedPersistRoot));
       localStorage.setItem("persist:root", JSON.stringify(updatedPersistRoot));
       // state.cart = action.payload;
 
-      state.qty += action.payload.qty;;
+      state.qty += action.payload.qty;
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.qty;
     },
@@ -63,5 +64,13 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProductStart, addProduct, addProductFailure, updateCartStart, updateCartSuccess, updateCartFailure } = cartSlice.actions;
+export const {
+  addProductStart,
+  addProduct,
+  addProductFailure,
+  updateCartStart,
+  updateCartSuccess,
+  updateCartFailure,
+  clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

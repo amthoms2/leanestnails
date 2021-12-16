@@ -8,10 +8,9 @@ import ShopAnnouncements from "../components/Shop/ShopNav/ShopAnnouncements";
 import Footer from "../components/Footer";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { mobile } from "../responsive";
-import {createNewCart, updateUserCart} from "../redux/api"
+// eslint-disable-next-line
+import { createNewCart, updateUserCart } from "../redux/api";
 // import { addProduct } from "../redux/cartRedux";
-
-
 
 export const ProductContainer = styled.div``;
 
@@ -84,13 +83,12 @@ export const Button = styled.button`
 const Product = () => {
   const location = useLocation();
   const productId = location.pathname.split("/")[2];
-
   const [product, setProduct] = useState({});
   const [qty, setQty] = useState(1);
-  const userId = useSelector((state) => state.user.currentUser._id);
-  const cartCheck = useSelector((state) => state.cart.cart);
-  const cartId = useSelector((state) => state.cart.cart._id);
-console.log('cart state', cartId)
+  // const userId = useSelector((state) => state.user.currentUser._id);
+  const cartCheck = useSelector((state) => state.cart.products);
+  // const cartId = useSelector((state) => state.cart._id);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -110,16 +108,18 @@ console.log('cart state', cartId)
       setQty(qty - 1);
     } else if (type === "plus") {
       setQty(qty + 1);
+    } else {
+      setQty(qty + 1)
     }
   };
 
   const handleClick = (evt) => {
     evt.preventDefault();
-      if(!cartCheck){
-        createNewCart(dispatch, { userId, ...product, qty})
-      } else {
-        updateUserCart(dispatch, cartId, product, qty)
-      }
+    if (cartCheck.length === 0) {
+      createNewCart(dispatch, product, qty);
+    } else {
+      updateUserCart(dispatch, product, qty);
+    }
   };
 
   return (

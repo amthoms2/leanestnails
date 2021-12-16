@@ -1,5 +1,7 @@
 import React from 'react'
-// import Navbar from "../components/Navbar"
+// eslint-disable-next-line
+import Navbar from "../components/Navbar"
+// eslint-disable-next-line
 import ShopNav from '../components/Shop/ShopNav'
 import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Slider from '../components/Shop/Slider/Slider'
@@ -10,9 +12,10 @@ import Footer from '../components/Footer'
 const Shop = () => {
   return (
     <>
-      <ShopAnnouncements />
+
       <ShopNav />
       {/* <Navbar /> */}
+      <ShopAnnouncements />
       <Slider />
       <Categories />
       <Products />

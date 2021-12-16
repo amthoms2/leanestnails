@@ -25,27 +25,39 @@ export const logout = async (dispatch) => {
 };
 
 const config = {
-  headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU4N2MwMzNjMTEzZDc4NmZjNDg1YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzkxNzczNTMsImV4cCI6MTY0NDM2MTM1M30.1fNu_HNcewPGLmQivH25D4npGuGhuKVCXd3dKdTlGPs`}
+  headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU4N2MwMzNjMTEzZDc4NmZjNDg1YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mzk2NzU5NzUsImV4cCI6MTY0NDg1OTk3NX0.3XboNIQAKuqaJx1x3D22Evl-fWOdORcLKGFi6DYVS0k`}
 }
 
-export const createNewCart = async (dispatch, product) => {
+export const createNewCart = async (dispatch, product, qty) => {
   dispatch(addProductStart());
   try{
-    const res = await axios.post("http://localhost:8080/api/cart", product, config);
+    const res = await axios.post("http://localhost:8080/api/cart", {product: product, qty: qty }, config);
     dispatch(addProduct(res.data))
   } catch(err){
     dispatch(addProductFailure())
   }
 }
 
-export const updateUserCart = async (dispatch, id, product, qty) => {
+export const updateUserCart = async (dispatch, product, qty) => {
   dispatch(updateCartStart());
   try{
-    const res = await axios.put(`http://localhost:8080/api/cart/`, product, config);
+    const res = await axios.put(`http://localhost:8080/api/cart/`, {product: product, qty: qty }, config);
+    console.log('qtyyyy', qty)
     dispatch(updateCartSuccess(res.data))
   } catch(err){
     dispatch(updateCartFailure())
   }
 }
 
+// export const getCartId = async (userId) => {
+//   try {
+//     const res = await axios.get(
+//       "http://localhost:8080/api/cart/find/" + userId, config
+//     );
+//     console.log('backend received something?', res.data)
+//     return res.data
+//   } catch (err) {
+//     console.log('getCart something wrong', err)
+//   }
+// }
 
