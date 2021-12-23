@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import ShopNav from "../components/Shop/ShopNav";
-import ShopAnnouncements from "../components/Shop/ShopNav/ShopAnnouncements";
+// import ShopAnnouncements from "../components/Shop/ShopNav/ShopAnnouncements";
 import Footer from "../components/Footer";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { mobile } from "../responsive";
@@ -126,7 +126,7 @@ const Product = () => {
     <>
       <ProductContainer>
         <ShopNav />
-        <ShopAnnouncements />
+        {/* <ShopAnnouncements /> */}
         <ProductWrapper>
           <ImageContainer>
             <Image src={product.img} />

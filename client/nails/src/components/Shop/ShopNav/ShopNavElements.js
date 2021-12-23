@@ -6,6 +6,7 @@ export const Nav = styled.nav`
   background: #000;
   height: 80px;
   margin-top: -80px;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +21,18 @@ export const Nav = styled.nav`
   }
 `
 //the nav will trigger on this screen size
+export const AnnouncementContainer = styled.div`
+  height: 25px;
+  position: relative;
+  background-color: #43E4DB;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 2000;
+`
 
 export const NavContainer = styled.div`
   display: flex;
@@ -136,16 +149,7 @@ export const NavBtnLink = styled(LinkRouter)`
   }
 
 `
-export const AnnouncementContainer = styled.div`
-  height: 30px;
-  background-color: #43E4DB;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: bold;
-`
+
 
 // import styled from 'styled-components'
 // import { mobile } from '../../../responsive'

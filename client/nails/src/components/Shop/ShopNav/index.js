@@ -64,13 +64,14 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./ShopNavElements";
+import ShopAnnouncements from "./ShopAnnouncements"
 
 const ShopNav = ({ toggleBar }) => {
   const qty = useSelector((state) => state.cart.qty);
   const cartId = useSelector((state) => state.cart._id);
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
-  console.log('qty in sn', qty)
+  // console.log('qty in sn', qty)
 
   const toggleHome = () => {
     scrollUp.scrollToTop();
@@ -84,27 +85,17 @@ const ShopNav = ({ toggleBar }) => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
+      <ShopAnnouncements />
         <Nav>
           <NavContainer>
-            <NavbarLogo to="/" onClick={toggleHome}>
+            <NavbarLogo to="/shop" onClick={toggleHome}>
               Logo
             </NavbarLogo>
             <MobileIcon onClick={toggleBar}>
               <FaBars />
             </MobileIcon>
             <NavMenu>
-              <NavItem>
-                <NavLinks
-                  to="about"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact="true"
-                  offset={-80}
-                >
-                  About
-                </NavLinks>
-              </NavItem>
+
               <NavItem>
                 <NavLinks
                   to="services"
