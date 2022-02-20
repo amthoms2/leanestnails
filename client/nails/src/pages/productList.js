@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import ShopNav from '../components/Shop/ShopNav'
-// import ShopAnnouncements from '../components/Shop/ShopNav/ShopAnnouncements'
 import Products from '../components/Shop/Products'
 import Footer from '../components/Footer'
 import { mobile } from '../responsive'
 
 const ProductListContainer = styled.div``
+
 const Title = styled.h1`
   margin: 20px;
 `
@@ -59,7 +59,6 @@ const ProductList = () => {
   return (
     <>
       <ProductListContainer>
-        {/* <ShopAnnouncements /> */}
         <ShopNav />
         <Title> Press On Nails </Title>
         <FilterContainer>

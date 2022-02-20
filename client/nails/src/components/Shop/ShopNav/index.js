@@ -66,11 +66,18 @@ import {
 } from "./ShopNavElements";
 import ShopAnnouncements from "./ShopAnnouncements"
 
-const ShopNav = ({ toggleBar }) => {
+const ShopNav = ({isBooking}) => {
+
   const qty = useSelector((state) => state.cart.qty);
   const cartId = useSelector((state) => state.cart._id);
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleBar = () => {
+    setIsOpen(!isOpen)
+  }
   // console.log('qty in sn', qty)
 
   const toggleHome = () => {
@@ -85,46 +92,36 @@ const ShopNav = ({ toggleBar }) => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-      <ShopAnnouncements />
+
+      { !isBooking ? <ShopAnnouncements /> : console.log('true')}
         <Nav>
-          <NavContainer>
-            <NavbarLogo to="/shop" onClick={toggleHome}>
+          <NavContainer isOpen={isOpen}>
+            <NavbarLogo to="/" onClick={toggleHome}>
               Logo
             </NavbarLogo>
-            <MobileIcon onClick={toggleBar}>
-              <FaBars />
+            <MobileIcon>
+              <FaBars onClick={toggleBar}/>
             </MobileIcon>
             <NavMenu>
 
-              <NavItem>
-                <NavLinks
-                  to="services"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact="true"
-                  offset={-80}
-                >
-                  Services
-                </NavLinks>
+            <NavItem>
+                <NavLinks to="/shop">Home</NavLinks>
               </NavItem>
+
               <NavItem>
-                <NavLinks
-                  to="gallery"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact="true"
-                  offset={-80}
-                >
-                  Gallery
-                </NavLinks>
+                <NavLinks to="/services"> Services</NavLinks>
               </NavItem>
+
+              <NavItem>
+                <NavLinks to="/gallery">Gallery</NavLinks>
+              </NavItem>
+
               <Link to={`/cart/${cartId}`}>
                 <Badge badgeContent={qty} color="primary">
                   <FaShoppingCart />
                 </Badge>
               </Link>
+
             </NavMenu>
 
             {user ? (

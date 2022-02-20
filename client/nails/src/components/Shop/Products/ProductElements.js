@@ -5,7 +5,7 @@ export const ProductsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`
+`//used in another file
 
 export const Information = styled.div`
   opacity: 0;
@@ -37,13 +37,6 @@ export const ProductContainer = styled.div`
 &:hover ${Information}{
     opacity: 1;
   }
-`
-export const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
 `
 export const Image = styled.img`
   height: 75%;

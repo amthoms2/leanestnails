@@ -17,7 +17,6 @@ const Products = ({ category, filters, sort }) => {
             ? `http://localhost:8080/api/products?category=${category}`
             : `http://localhost:8080/api/products`
         );
-        // console.log(res.data)
         setProducts(res.data);
       } catch (err) {
         console.log(err);

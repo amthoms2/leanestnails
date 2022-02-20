@@ -6,6 +6,7 @@ import Products from '../components/Shop/Products'
 import Footer from '../components/Footer'
 
 const Shop = () => {
+
   return (
     <>
       <ShopNav />
