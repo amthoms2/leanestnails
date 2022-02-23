@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mobile } from '../../../responsive'
 
 export const ProductsContainer = styled.div`
   padding: 20px;
@@ -39,10 +40,14 @@ export const ProductContainer = styled.div`
   }
 `
 export const Image = styled.img`
-  height: 75%;
+width: 100%;
+  height: 100%;
+  object-fit: contain;
+  ${mobile({ height: "40vh" })}
+  /* height: 75%;
   width: 80%;
   z-index: 2;
- object-fit: contain;
+ object-fit: contain; */
 `
 //remove object-fit if I want images to be all the same!
 

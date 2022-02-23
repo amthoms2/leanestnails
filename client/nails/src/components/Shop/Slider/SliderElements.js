@@ -50,7 +50,10 @@ export const Slide = styled.div`
 
  `
  export const Image = styled.img`
-  height: 80%;
+ width: 100%;
+  height: 100%;
+  object-fit: cover;
+  ${mobile({ height: "40vh" })}
  `
 
  export const InfoContainer = styled.div`

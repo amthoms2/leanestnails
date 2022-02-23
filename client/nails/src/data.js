@@ -2,21 +2,21 @@
 export const sliderData = [
   {
     id: 1,
-    img: require('./images/nailpolish.jpg').default,
+    img: require('./images/pexelsgrab.jpg').default,
     title: 'Leanest Nails',
     description: 'Put the description here!',
-    bg: 'f5fafd'
+    bg: 'd1dfde'
   },
   {
     id: 2,
-    img: require('./images/nailflower.jpg').default,
+    img: require('./images/pexelsyellow.jpg').default,
     title: 'Leanest Nails',
     description: 'Put the description here!',
     bg: 'fcf1ed'
   },
   {
     id: 3,
-    img: require('./images/spilledpolish.jpg').default,
+    img: require('./images/pexelsgloved.jpg').default,
     title: 'Leanest Nails',
     description: 'Put the description here!',
     bg: 'fbf0f4'
@@ -55,5 +55,33 @@ export const products = [
     id: 4,
     img: require('./images/shop.png').default,
   }
+];
+
+export const services = [
+  {
+    id: 1,
+    name: 'Manicure'
+  },
+  {
+    id: 2,
+    name: 'Manicure 2'
+  },
+  {
+    id: 3,
+    name: 'Manicure 2'
+  },
+  {
+    id: 4,
+    name: 'Manicure 4'
+  },
+  {
+    id: 5,
+    name: 'Manicure 5'
+  },
+  {
+    id: 6,
+    name: 'Manicure 6'
+  }
+
 ]
 

@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Home from './pages'
 import SignIn from './pages/signin'
-import Book from './pages/book'
+import Book from './pages/book/'
+import Calendar from './pages/book/calendar'
 import Shop from './pages/shop'
 import SignUp from './components/Account/Signup'
 import Cart from './pages/cart'
@@ -37,6 +38,7 @@ const ScrollToTop = ({ children }) => {
         <Route path='/' component={Home} exact />
         <Route path='/gallery' component={Gallery} />
         <Route path='/book' component={Book} />
+        <Route path='/book/calendar' component={Calendar} />
         <Route path='/shop' component={Shop} />
         <Route path='/products/:category' component={ProductList} />
         <Route path='/product/:id' component={Product}/>
